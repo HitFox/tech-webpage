@@ -1,13 +1,13 @@
 
 
+@charset 'utf-8';
+
 @import './node_modules/csswizardry-grids-fork/csswizardry-grids';
 @import 'normalize';
+@import 'variables';
+@import 'typography';
 
-body {
-  background-color: tomato;
-  color: white;
-  margin: 0 auto;
-  max-width: 33em;
-  display: flex;
-  flex-direction: row;
-}
+h1,h2,h3,h4,h5,h6,
+ul,ol,dd,
+p,figure,
+pre,table,fieldset,hr { margin-top: 0; }
