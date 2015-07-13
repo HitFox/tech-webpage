@@ -29,3 +29,4 @@ Gemfile
 ## Installation
 * `gem install bundler`
 * `bundle install`
+* `npm i`
