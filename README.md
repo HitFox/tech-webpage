@@ -13,9 +13,6 @@ config.rb
     index.html
 Gemfile
 |-- src/
-    |--.tmp/
-       |-- assets
-           |-- css
     |-- assets/
        |-- css/
        |-- images/
