@@ -7,7 +7,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
 var runSequence = require('run-sequence');
-var clean = require('gulp-clean');
 var minifyCss = require('gulp-minify-css');
 var livereload = require('gulp-livereload');
 
@@ -42,21 +41,13 @@ gulp.task('sass:watch', function () {
   gulp.watch('./src/assets/scss/**/*.scss', ['sass']);
 });
 
-gulp.task('clean:tmp', function() {
-  return gulp.src('./src/.tmp', { read: false})
-  .pipe(clean());
-})
-
 gulp.task('build', function() {
   runSequence(
-    'clean:tmp',
     'sass:build');
 });
 
 gulp.task('default', ['sass:watch']);
 
   //TASK IMAGEMAGIC
-  //TASK COPY
-  //TASK MINIFY
   //TASK CONCATINATE
   //TASK OPTIMIZE SVG
