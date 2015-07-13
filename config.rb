@@ -50,7 +50,7 @@ ignore 'assets/**/*'
 #   end
 # end
 
-set :css_dir, 'stylesheets'
+set :css_dir, 'assets/css'
 
 set :js_dir, 'javascripts'
 
