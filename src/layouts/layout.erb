@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="no-js">
   <head>
     <meta charset="utf-8">
 
@@ -9,8 +9,8 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "HitFox Tech Department" %></title>
 
-    <%= stylesheet_link_tag "styles" %>
-    <!-- <%= javascript_include_tag  "all" %> -->
+    <%= stylesheet_link_tag "styles", "font-data" %>
+    <%= javascript_include_tag  "modernizr.custom" %>
   </head>
 
   <body class="<%= page_classes %>">
