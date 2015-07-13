@@ -1,11 +1,4 @@
 
 
-* { box-sizing: border-box;
-
-  &::before,
-  &::after { box-sizing: inherit; }
-}
-
-body {
-  background-color: lightblue;
-}
+@import './node_modules/csswizardry-grids-fork/csswizardry-grids';
+@import 'normalize';
