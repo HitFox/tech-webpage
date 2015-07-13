@@ -1,4 +1,5 @@
 # HitFox Tech Department Webpage
+This is the source code of the new HitFox Tech Department webpage.
 ## Folder Structure
 ```
 .
