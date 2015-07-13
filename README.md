@@ -42,3 +42,10 @@ Gemfile
 * `sass:prefix` adds prefixes to the `.css` file and copies it into the .dist location. Has to be used in combination with `sass:build`.
 * `build` runs the sass build version, postcss and cssminify with the scss/css files.
 * `default`runs sass:watch + livereload (using the browser extension).
+
+## Running the project
+### Dev
+`middleman server` + `gulp`
+
+### Build
+`middleman build` + `gulp build`
