@@ -24,6 +24,7 @@ Gemfile
 ```
 
 ## Setup
+* [Editorconfig](http://editorconfig.org/#overview)
 * Middleman
 * Gulp
 * Packages via npm
@@ -81,3 +82,7 @@ Gemfile
   width: (100% / 4);
 }
 ```
+
+#### Colors
+* [HSL notation](https://en.wikipedia.org/wiki/HSL_and_HSV) (When using HSL or RGB notation, always add a single space after a comma (,) and no space between parentheses ((, )) and content.)
+* Use color variables like the following: :`$color-colorname` (For color names go to [Name that color](http://chir.ag/projects/name-that-color/#6195ED)).
