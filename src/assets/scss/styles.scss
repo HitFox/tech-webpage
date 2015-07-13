@@ -2,3 +2,12 @@
 
 @import './node_modules/csswizardry-grids-fork/csswizardry-grids';
 @import 'normalize';
+
+body {
+  background-color: tomato;
+  color: white;
+  margin: 0 auto;
+  max-width: 33em;
+  display: flex;
+  flex-direction: row;
+}
