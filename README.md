@@ -1,4 +1,4 @@
-# tech-webpage
+# HitFox Tech Department Webpage
 ## Folder Structure
 ```
 .
