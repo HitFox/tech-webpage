@@ -20,10 +20,14 @@
     "autoprefixer-core": "^5.2.1",
     "csswizardry-grids-fork": "verpixelt/csswizardry-grids",
     "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-livereload": "^3.8.0",
+    "gulp-minify-css": "^1.2.0",
     "gulp-postcss": "^5.1.9",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
-    "normalize.css": "necolas/normalize.css"
+    "normalize.css": "necolas/normalize.css",
+    "run-sequence": "^1.1.1"
   }
 }

@@ -6,6 +6,10 @@ var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
+var runSequence = require('run-sequence');
+var clean = require('gulp-clean');
+var minifyCss = require('gulp-minify-css');
+var livereload = require('gulp-livereload');
 
 gulp.task('loadNormalize', function() {
   gulp.src('./node_modules/normalize.css/normalize.css')
@@ -18,33 +22,39 @@ gulp.task('sass', function () {
     .pipe(sourcemaps.init())
       .pipe(sass({outputStyle: 'expanded'}))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./src/assets/css'));
+    .pipe(gulp.dest('./src/assets/css'))
+    .pipe(livereload());
 });
 
 gulp.task('sass:build', function() {
-  gulp.src('./src/assets/scss/**/*.scss')
-  .pipe(sass({outputStyle: 'compressed'}))
-  .pipe(gulp.dest('./src/.tmp/assets/css'))
-})
-
-gulp.task('sass:prefix', function() {
   var processors = [
       autoprefixer({browsers: ['last 2 versions']})
   ];
-  return gulp.src('./src/.tmp/assets/css/*.css')
+  gulp.src('./src/assets/scss/**/*.scss')
+  .pipe(sass({outputStyle: 'compressed'}))
   .pipe(postcss(processors))
-  .pipe(gulp.dest('./dist/assets/css'))
+  .pipe(minifyCss({compatibility: '*'}))
+  .pipe(gulp.dest('./dist/assets/css'));
 })
 
 gulp.task('sass:watch', function () {
+  livereload.listen();
   gulp.watch('./src/assets/scss/**/*.scss', ['sass']);
 });
 
+gulp.task('clean:tmp', function() {
+  return gulp.src('./src/.tmp', { read: false})
+  .pipe(clean());
+})
 
+gulp.task('build', function() {
+  runSequence(
+    'clean:tmp',
+    'sass:build');
+});
 
-  //TASK SASS
-  //TASK WATCH
-  //TASK AUTOPREFIXING
+gulp.task('default', ['sass:watch']);
+
   //TASK IMAGEMAGIC
   //TASK COPY
   //TASK MINIFY
