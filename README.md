@@ -21,3 +21,10 @@ Gemfile
     index.html.erb
     |-- layouts/
 ```
+
+## Setup
+* Middleman
+
+## Installation
+* `gem install bundler`
+* `bundle install`
