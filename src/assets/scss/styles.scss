@@ -5,6 +5,7 @@
 @import './node_modules/csswizardry-grids-fork/csswizardry-grids';
 @import 'normalize';
 @import 'variables';
+@import 'breakpoints';
 @import 'typography';
 
 h1,h2,h3,h4,h5,h6,
@@ -29,7 +30,6 @@ body,
   flex-direction: row;
   width: 100%;
   overflow-x: hidden;
-  font-size: 1.25em;
 }
 
 .container__el--d-left {
@@ -42,7 +42,7 @@ body,
 .container__el--d-right {
   background-color: #fff;
   width: 45%;
-  padding: 4em;
+  padding: 1em;
   height: 100%;
   transition: width ease .5s;
   transform: translateZ(0);
