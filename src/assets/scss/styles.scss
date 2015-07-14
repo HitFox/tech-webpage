@@ -11,3 +11,52 @@ h1,h2,h3,h4,h5,h6,
 ul,ol,dd,
 p,figure,
 pre,table,fieldset,hr { margin-top: 0; }
+
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after { box-sizing: inherit; }
+}
+
+img { max-width: 100%; }
+
+html,
+body,
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: hidden;
+  font-size: 1.25em;
+}
+
+.container__el--d-left {
+  width: 55%;
+  background-color: #47a3da;
+  height: 100%;
+  transition: all 1.8s;
+}
+
+.container__el--d-right {
+  background-color: #fff;
+  width: 45%;
+  padding: 4em;
+  height: 100%;
+  transition: width ease .5s;
+  transform: translateZ(0);
+}
+
+.container-content {
+  max-width: 33.3em;
+  margin: 0 auto;
+}
+
+.is-active .container__el--d-right {
+  width: 600%;
+}
+
+.is-active .container__el--d-left {
+  transform: translateX(-60%);
+}
