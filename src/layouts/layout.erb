@@ -10,10 +10,22 @@
     <title><%= current_page.data.title || "HitFox Tech Department" %></title>
 
     <%= stylesheet_link_tag "styles", "font-data" %>
-    <%= javascript_include_tag  "modernizr.custom" %>
+    <%= javascript_include_tag  "modernizr.custom", "uilang" %>
   </head>
 
   <body class="<%= page_classes %>">
-    <%= yield %>
+    <div class="container">
+      <div class="container__el container__el--d-left">
+        <%= image_tag 'stag.jpeg' %>
+      </div>
+      <div class="container__el container__el--d-right">
+        <div class="container-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam et, adipisci dolorem voluptate ab voluptas, magni, excepturi recusandae praesentium provident quod autem deserunt fuga perspiciatis mollitia maiores vitae laboriosam sapiente!</p>
+        </div>
+      </div>
+    </div>
+    <code>
+      clicking on ".container__el--d-right" toggle class "is-active" on ".container"
+    </code>
   </body>
 </html>
