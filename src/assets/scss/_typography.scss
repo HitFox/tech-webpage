@@ -1,6 +1,91 @@
 
 
+//FONT-SIZE MAPS
+//BODY
+$b-fz: (
+  null: 1em,
+  medium: 1.125em,
+  large: 1.25em
+);
+
+//H1
+$h1-fz: (
+  null: 2.281em
+);
+
+//H2
+$h2-fz: (
+  null: 2.027em
+);
+
+//H3
+$h3-fz: (
+  null: 1.602em
+);
+
+//H4
+$h4-fz: (
+  null: 1.266em
+);
+
+//MIXIN TO GO THROUGH THE MAPS
+@mixin fz($fz-map, $fz-bps: $bps) {
+  @each $fz-bp, $fz in $fz-map {
+    @if $fz-bp == null { font-size: $fz; }
+
+    @else {
+      @if map-has-key($fz-bps, $fz-bp) {
+        $fz-bp: map-get($fz-bps, $fz-bp);
+      }
+      @media screen and(min-width: $fz-bp) {
+        font-size: $fz;
+      }
+    }
+  }
+}
+
 body {
-  font-family: $ff-clear-regular;
+  @include fz($b-fz);
   color: $color-dove-gray;
+  font-family: $ff-clear-regular;
+  line-height: 1.602;
+}
+
+p { margin-bottom: 2 * $m-base; }
+
+h1,
+h2,
+h3,
+h4 { color: $color-orange; }
+
+h1,
+.alpha {
+  @include fz($h1-fz);
+  font-family: $ff-sweden-regular;
+  line-height: 1.266;
+  margin-bottom: 2 * $m-base;
+}
+
+h2,
+.beta {
+  @include fz($h2-fz);
+  font-family: $ff-sweden-regular;
+  line-height: 1.424;
+  margin-bottom: 1.5 * $m-base;
+}
+
+h3,
+.gamma {
+  font-family: $ff-sweden-regular;
+  @include fz($h3-fz);
+  margin-bottom: $m-base;
+  line-height: 1.424;
+}
+
+h4,
+.delta {
+  font-family: $ff-sweden-regular;
+  @include fz($h4-fz);
+  margin-bottom: $m-base;
+  line-height: 1.424;
 }
