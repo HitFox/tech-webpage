@@ -1,0 +1,35 @@
+.logo-content {
+  background-color: $color-alabaster;
+  margin-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  position: relative;
+
+  @include bp(x) {
+    margin-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  @include bp(xxx) {
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.logo-content__img {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: -2.5rem;
+  width: 5rem;
+
+  @include bp(x) {
+    top: -3.75rem;
+    width: 7.5rem;
+  }
+
+  @include bp(xxx) {
+    top: -5rem;
+    width: 10rem;
+  }
+}

@@ -1,0 +1,16 @@
+.table-events {
+  font-size: .777777778em;
+
+  @include bp(x) { font-size: .888888889em; }
+}
+
+.table-events__data {
+  padding-bottom: 2 * $unit-base;
+  padding-top: $unit-base;
+}
+
+.table-events__data:not(:last-child) { padding-right: $unit-base; }
+
+.table-events__data:last-child { text-align: right; }
+
+.table-events__data a { font-size: 1em; }

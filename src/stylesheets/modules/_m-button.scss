@@ -1,0 +1,26 @@
+@mixin btn($color) {
+  border: 1px solid $color;
+  cursor: pointer;
+  padding: $unit-base 2 * $unit-base;
+
+  &:hover { text-decoration: none; }
+}
+
+.btn {
+  @include btn($color-white);
+
+  &:hover {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-white;
+    color: $color-orient;
+    text-decoration: none;
+  }
+}
+
+.btn--is-blue { @include btn($color-orient);
+
+  &:hover {
+    background-color: $color-orient;
+    color: $color-white;
+  }
+}

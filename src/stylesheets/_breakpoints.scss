@@ -1,0 +1,15 @@
+$breakpoints-non-grid: (
+  "x": 30.0625em,
+  "xx": 48.0625em,
+  "xxx": 64.1875em
+);
+
+@mixin bp($breakpoint) {
+  @if map-has-key($breakpoints-non-grid, $breakpoint) {
+    @media(min-width: map-get($breakpoints-non-grid, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from '#{$breakpoint}'." + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

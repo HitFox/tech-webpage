@@ -1,0 +1,21 @@
+.partial {
+  display: block;
+  margin-bottom: 6 * $unit-base;
+  width: 100%;
+
+  @include bp(xx) {
+    align-items: center;
+    display: block;
+    text-align: center;
+    width: 25%;
+
+    &:first-child { padding-left: 0; }
+  }
+}
+
+.partial-img {
+  margin-bottom: 2 * $unit-base;
+  width: 7.5rem;
+
+  @include bp(xx) { margin: 0 auto 2 * $unit-base auto; }
+}

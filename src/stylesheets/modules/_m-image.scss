@@ -1,0 +1,79 @@
+.image-headline {
+  bottom: 20%;
+  color: $color-white;
+  font-size: $fz-24;
+  left: 0;
+  line-height: $lh-24;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .4);
+  width: 80%;
+
+  @include bp(x) {
+    font-size: $fz-48;
+    line-height: $lh-48;
+  }
+
+  @include bp(xx) {
+    font-size: $fz-84;
+    line-height: $lh-84;
+  }
+}
+
+.image-headline-frame {
+  align-items: flex-end;
+  display: flex;
+  height: calc(100% - 2.25rem);
+  padding: 2 * $unit-base;
+  position: absolute;
+  top: 3 * $unit-base;
+  width: 100%;
+
+  @include bp(x) {
+    height: calc(100% - 4.5rem);
+    left: 0;
+    margin: 0 auto;
+    right: 0;
+    top: 8 * $unit-base;
+    width: calc(100% - 4.5rem);
+  }
+
+  @include bp(xx) {
+    border: 1px solid $color-white;
+    left: auto;
+    max-width: 30rem;
+    padding: 4 * $unit-base 4 * $unit-base 8 * $unit-base 4 * $unit-base;
+    right: 6 * $unit-base;
+    top: 6 * $unit-base;
+  }
+}
+
+.image-text {
+  color: $color-white;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.image-text .btn {
+  color: $color-white;
+  text-transform: uppercase;
+}
+
+.picture-container { position: relative;
+
+  &::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .8) 100%);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.picture-container-quote:before { background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .6) 100%); }
+

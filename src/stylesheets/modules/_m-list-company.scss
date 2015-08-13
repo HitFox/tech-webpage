@@ -1,0 +1,35 @@
+.section-company {
+
+  @include bp(xx) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &:not(:last-child) { border-bottom: 1px solid $color-silver; }
+}
+
+.company-list__logo {
+  display: block;
+  height: auto;
+  margin-bottom: 3 * $unit-base;
+  max-height: 6.875rem;
+  width: 50%;
+
+  @include bp(x) {
+    margin-bottom: 5 * $unit-base;
+    width: 31%;
+  }
+
+  @include bp(xxx) { width: 100%; }
+}
+
+.logo-valendo { width: auto; }
+
+.company-list__list-data { font-size: .777777778em;
+
+  @include bp(x) { font-size: .888888889em; }
+}
+
+.company-list__list-data-el { margin-bottom: 2 * $unit-base; }

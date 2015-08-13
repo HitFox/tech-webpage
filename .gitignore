@@ -1,0 +1,16 @@
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+node_modules/
+bower_components/
+npm-debug.log
+config/*.json
+.rebooted
+.eslintrc
+.jshintignore
+.jshintrc
+public/assets
+public/stylesheets
+public/javascripts
+public/rev-manifest.json
+public/*.html
