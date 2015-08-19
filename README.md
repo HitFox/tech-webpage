@@ -3,9 +3,9 @@ Tech Webpage
 
 Deploy
 -------
-Every commit to branch `develop` will be deployed automatically to [staging].
 
-Every merge/commit to branch `master` will be deployed automatically to [production].
+* Every commit to branch `develop` will be deployed automatically to [staging].
+* Every merge/commit to branch `master` will be deployed automatically to [production].
 
 
 Install
