@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 
 app.use(express.static(pub));
-app.post('/cofounder_mail', messageServer);
+app.post('/contact', messageServer);
 
 app.get('/', function(req, res, next) {
   var file = getFile('index');
