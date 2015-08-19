@@ -5,10 +5,10 @@ var mandrillClient = new mandrill.Mandrill(mandrillApiKey);
 var sendMessage = function(from, text, done) {
   var message = {
     'text': text,
-    'subject': 'New Cofounder Sign Up',
+    'subject': 'TechDev homepage contact request',
     'from_email': from,
     'to': [{
-      'email': 'co-founder@finleap.com',
+      'email': 'jan.varwig@hitfoxgroup.com',
       'type': 'to'
     }],
     'headers': {
@@ -26,19 +26,17 @@ var sendMessage = function(from, text, done) {
   });
 };
 
-var handleCofounderEmail = function(email, profileUrl, done) {
-  if(email !== '' && profileUrl !== '') {
-    var text = 'Cofounder:\n' + email + '\n' + profileUrl;
+var handleEmail = function(email, text, done) {
+  if(email !== '' && text !== '') {
     sendMessage(email, text, done);
   } else {
     done(new Error('Email and Profile URL SHOULD NOT be empty.'));
   }
-
 };
 
 module.exports = function(req, res, next){
   var body = req.body;
-  handleCofounderEmail(body.email, body.profile_url, function(err) {
+  handleEmail(body.email, body.text, function(err) {
     if(err !== null) {
       console.log(err);
       res.sendStatus(400);
