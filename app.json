@@ -1,9 +1,7 @@
 {
   "name":"tech-webpage",
   "description":"The HitFox Group TechDev website",
-  "scripts":{
-    "postdeploy": "$(npm bin)/gulp build"
-  },
+  "scripts":{},
   "env":{},
   "addons":[]
 }
