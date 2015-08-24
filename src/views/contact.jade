@@ -1,0 +1,14 @@
+extends _layout
+
+block content
+  h1 Contact us
+  p If you can imagine yourself being part of our team, you should get in touch.
+  p If you want to work in a startup at HitFox you can check out their job postings <a href="http://hitfoxgroup.com/jobs/berlin">here</a>.
+
+  form(method="post")
+    input(name="email" type="email" placeholder="email")
+    br
+    textarea(name="text" placeholder="your message")
+    br
+    input(type="submit")
+
