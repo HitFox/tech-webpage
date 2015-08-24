@@ -1,8 +1,9 @@
 
 
 //SETTINGS
-@import 'settings.global';
 @import 'settings.colors';
+@import 'settings.global';
+
 
 
 
@@ -14,6 +15,7 @@
 @import 'generic.box-sizing';
 
 //BASE
+@import 'base.page';
 
 //COMPONENTS
 
