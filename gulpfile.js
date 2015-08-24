@@ -21,6 +21,8 @@ var sourcemaps   = require('gulp-sourcemaps');
 
 var path             = require('path');
 var webpack          = require('webpack');
+
+var postProcessorsDev   = [autoprefixer({browsers: ['last 3 version']})];
 var postProcessors   = [autoprefixer({browsers: ['last 3 version']}), mqpacker, csswring];
 
 var BASE             = 'src/';
@@ -29,6 +31,11 @@ var STYLESHEET_FILES = 'src/stylesheets/**/*.scss';
 var VIEW_FILES       = 'src/views/**/*';
 var JAVASCRIPT_FILES = 'src/javascripts/*.js';
 var OUTPUT_FOLDER    = 'public/';
+
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
 
 function replace() {
   var manifest = gulp.src(OUTPUT_FOLDER + 'rev-manifest.json');
@@ -56,9 +63,9 @@ gulp.task('assets:production', function(){
 gulp.task('css:development', function () {
   return gulp.src(STYLESHEET_FILES, {base: BASE})
     .pipe(sourcemaps.init())
-    .pipe(sass()
+    .pipe(sass(sassOptions)
        .on('error', sass.logError))
-    .pipe(postcss(postProcessors))
+    .pipe(postcss(postProcessorsDev))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(OUTPUT_FOLDER))
     .pipe(livereload());
