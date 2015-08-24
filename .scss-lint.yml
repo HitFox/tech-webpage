@@ -1,5 +1,5 @@
-scss_files: 'src/stylesheetsa/**/*.scss'
-exclude: ['./node_modules/**/*', './src/stylesheets/_grid.scss', './src/stylesheets/_normalize.scss', './public/stylesheets/*.css']
+scss_files: 'src/stylesheets/**/*.scss'
+exclude: ['./node_modules/**/*', './src/stylesheets/_grid.scss', './src/stylesheets/_generic.normalize.scss', './public/stylesheets/*.css']
 
 linters:
   BangFormat:
