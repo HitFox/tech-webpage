@@ -20,3 +20,16 @@ gem install scss_lint
 
 [staging]: https://tech-webpage-staging.herokuapp.com/
 [production]: https://tech-webpage.herokuapp.com/
+
+
+Develop
+-------
+
+Run `npm start` to start gulp, watching all the files.
+That'll compile everything from `/src` into `/public`.
+
+Run `npm run server` to start the express server that'll serve files
+from `/public` to <http://localhost:4000/>
+
+Run `npm run build` to perform a production build instead of a
+development build.
