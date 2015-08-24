@@ -3,11 +3,11 @@
 //SETTINGS
 @import 'settings.colors';
 @import 'settings.global';
-
-
-
+@import 'settings.font-sizes';
+@import 'settings.breakpoints';
 
 //TOOLS
+@import 'tools.mixins';
 
 //GENERIC
 @import './node_modules/inuit-normalize/generic.normalize';
