@@ -1,11 +1,11 @@
 
 
 html {
+  background-color: $project-base-background-color;
+  color: $project-base-color;
   -webkit-font-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: $project-base-background-color;
-  color: $project-base-color;
   min-height: 100%;
   overflow-y: scroll;
 }
