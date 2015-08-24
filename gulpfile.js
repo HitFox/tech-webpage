@@ -42,6 +42,13 @@ function replace() {
   return revReplace({manifest: manifest});
 }
 
+function errorHandler(label) {
+  return function handleError(error) {
+    gutil.log(gutil.colors.red(label + ' error:'), error.message);
+    this.emit('end');
+  };
+}
+
 gulp.task('assets:development', function(){
   return gulp.src(ASSET_FILES, {base: BASE})
     .pipe(gulp.dest(OUTPUT_FOLDER))
@@ -125,6 +132,7 @@ gulp.task('html:development', function(){
 
   return gulp.src([VIEW_FILES, '!**/_*'])
     .pipe(gif('*.jade', jade(jadeOptions)))
+    .on('error', errorHandler('Jade'))
     .pipe(gulp.dest(OUTPUT_FOLDER))
     .pipe(livereload());
 });
