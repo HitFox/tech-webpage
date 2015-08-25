@@ -10,14 +10,46 @@ block content
       .section-text__body
         a team of developers, designers and product managers with the goal to assist young ventures in their early stages with expertise and manpower. 
     .head-bubbles
-      each id in [0,1,2,3,4,5,6, 7, 8, 9]
-        svg(width="140" height="140" id="bubble-"+id).head-bubble
-          defs
-            pattern(id="bg" x="0" y="0" width="1" height="1")
-              image(xlink:href="/assets/jan.jpeg" width="150" height="150")
-          path(
-            fill="url(#bg)"
-            d="M67.6034121,0.791472949 C69.6610913,-0.0126446165 72.979831,0.0417343038 75.0123606,0.911364038 L115.599276,18.276714 C117.633446,19.1470456 119.986541,21.4965185 120.853498,23.5207596 L138.165468,63.9421644 C139.033124,65.9680392 139.08003,69.2764648 138.269626,71.3332886 L121.472904,113.963724 C120.662773,116.019855 118.386465,118.454823 116.387124,119.403091 L74.9480782,139.057236 C72.9494103,140.005185 69.6761031,140.098044 67.6183932,139.257062 L23.1527426,121.084031 C21.1033372,120.246443 18.787726,117.904023 17.9755224,115.838976 L1.07512066,72.8693043 C0.265226288,70.8101287 0.280856743,67.4881348 1.11890011,65.4276198 L18.3011418,23.181277 C19.1352149,21.1305237 21.4816061,18.8153484 23.5371225,18.0120761 L67.6034121,0.791472949 Z")
+      -
+        bubbles = [
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+          {name: 'jan'},
+        ]
+      mixin bubble(person)
+        if person
+          svg(width="140" height="140").head-bubble
+            defs
+              pattern(id="bg" x="0" y="0" width="1" height="1")
+                image(xlink:href="/assets/"+person.name+".jpeg" width="150" height="150")
+            path(
+              fill="url(#bg)"
+              d="M67.6034121,0.791472949 C69.6610913,-0.0126446165 72.979831,0.0417343038 75.0123606,0.911364038 L115.599276,18.276714 C117.633446,19.1470456 119.986541,21.4965185 120.853498,23.5207596 L138.165468,63.9421644 C139.033124,65.9680392 139.08003,69.2764648 138.269626,71.3332886 L121.472904,113.963724 C120.662773,116.019855 118.386465,118.454823 116.387124,119.403091 L74.9480782,139.057236 C72.9494103,140.005185 69.6761031,140.098044 67.6183932,139.257062 L23.1527426,121.084031 C21.1033372,120.246443 18.787726,117.904023 17.9755224,115.838976 L1.07512066,72.8693043 C0.265226288,70.8101287 0.280856743,67.4881348 1.11890011,65.4276198 L18.3011418,23.181277 C19.1352149,21.1305237 21.4816061,18.8153484 23.5371225,18.0120761 L67.6034121,0.791472949 Z")
+        else
+          .head-bubble
+
+      for person in bubbles
+        +bubble(person)
     style.
       .head-bubbles {
         height: 800px;
@@ -25,29 +57,7 @@ block content
       }
       .head-bubble {
         position: absolute;
-      }
-    script.
-      var SIZE       = 140;
-      var START_X    =  75;
-      var START_Y    =  75;
-      var DRIFT_X    = -30;
-      var STEP       = SIZE * 1.1;
-      var SLOPE      = DRIFT_X / STEP;
-      var node;
-      var column, row, x, y, even;
-      for(var i=0; i<10; i++) {
-        column = ~~(i/3);
-        row    =   i%3;
-        even   = column%2;
-        x = START_X + column*STEP + DRIFT_X * row;
-        y = START_Y + row   *STEP;
-        if (even) {
-          y = y + STEP/2 ;
-          x = x + SLOPE * STEP/2;
-        }
-        node = document.getElementById('bubble-'+i);
-        node.style.left = '' + x + 'px';
-        node.style.top = '' + y + 'px';
+        transition: transform .3s ease-out;
       }
 
 
