@@ -31,11 +31,18 @@ html(lang="en")
       
     block styles
       link(rel="stylesheet" type="text/css" href="/stylesheets/styles.css")
-      link(rel="stylesheet" type="text/css" href="/stylesheets/fonts-data.css")
       
     block head-scripts
       script(src="/javascripts/main.js")
-      
+      script(src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js")
+      script.
+        WebFont.load({
+          custom: {
+            families: ['Sailec', 'Lato'],
+            urls: ['/stylesheets/styles.css']
+          }
+        });
+
   body
     block header
     block main
