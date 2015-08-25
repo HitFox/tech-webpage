@@ -1,5 +1,12 @@
 
 
 a {
+  background-image: linear-gradient($color-white 50%, $color-silver 50%);
+  background-position: 0 19px;
+  background-repeat: repeat-x;
+  background-size: 1px 3px;
+
   color: $color-brand;
+  font-family: Lato-Bold;
+  text-decoration: none;
 }
