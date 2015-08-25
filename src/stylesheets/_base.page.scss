@@ -1,5 +1,6 @@
 
 
+
 html {
   background-color: $project-base-background-color;
   color: $project-base-color;
@@ -11,7 +12,6 @@ html {
 }
 
 body {
-  font-family: Lato, sans-serif;
-  font-size: ($project-base-font-size / 16px) * 1em;
-  line-height: $project-base-line-height;
+  @include font-size($paragraph-typo);
+  font-family: $ff-body;
 }
