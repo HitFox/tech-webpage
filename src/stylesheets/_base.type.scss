@@ -5,12 +5,63 @@ body {
   font-family: $ff-body;
 }
 
-h1 { @include typo($heading1-typo); }
+p,
+ul {
+  margin-bottom: 2 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 6 * $project-base-measure; }
+}
 
-h2 { @include typo($heading2-typo); }
+h1,
+h2,
+h3,
+h4 { font-family: $ff-body-bold; }
 
-h3 { @include typo($heading3-typo); }
+h1 {
+  @include typo($heading1-typo);
+  margin-bottom: 1 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 1.5 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 2 * $project-base-measure; }
+}
 
-h4 { @include typo($heading4-typo); }
+h2 {
+  @include typo($heading2-typo);
+  margin-bottom: .75 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 1 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 1.5 * $project-base-measure; }
+}
 
+h3 {
+  @include typo($heading3-typo);
+  margin-bottom: .5 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: .75 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 1 * $project-base-measure; }
+}
 
+h4 {
+  @include typo($heading4-typo);
+  margin-bottom: .25 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: .75 * $project-base-measure; }
+}
+
+ul,
+ol {
+  padding-left: 1.5 * $project-base-measure;
+  @include mq(smallish) { padding-left: 1.75 * $project-base-measure; }
+  @include mq(mediumish) { padding-left: 2.25 * $project-base-measure; }
+}
+
+ul { list-style: none; }
+
+ul li { position: relative;
+
+  &::before {
+    color: $color-silver;
+    content: '→';
+    left: -1.25 * $project-base-measure;
+    position: absolute;
+    @include mq(smallish) { left: -1.5 * $project-base-measure; }
+    @include mq(mediumish) { left: -2 * $project-base-measure; }
+  }
+}
