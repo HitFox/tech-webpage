@@ -1,3 +1,16 @@
 
 
+body {
+  @include typo($paragraph-typo);
+  font-family: $ff-body;
+}
+
+h1 { @include typo($heading1-typo); }
+
+h2 { @include typo($heading2-typo); }
+
+h3 { @include typo($heading3-typo); }
+
+h4 { @include typo($heading4-typo); }
+
 
