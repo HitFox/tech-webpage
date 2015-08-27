@@ -10,8 +10,3 @@ html {
   min-height: 100%;
   overflow-y: scroll;
 }
-
-body {
-  @include font-size($paragraph-typo);
-  font-family: $ff-body;
-}
