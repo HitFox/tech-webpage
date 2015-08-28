@@ -1,22 +1,34 @@
 
+// MARKUP
+// div.img--is-in-background
+//   img.img--is-in-background__img OPTIONAL TO USE IT WITH AN ACTUAL IMAGE
+//   div.img--is-in-background__content
 
-$bgi-width: 16;
-$bgi-height: 9;
+$bgi-ratio-width: 3;
+$bgi-ratio-height: 2;
 
-.img--is-on-background {
-  background-image: url('/assets/images/sea-1920.jpg');
+.img--is-in-background {
+  // background-image: url('/assets/images/sea-1920.jpg');
   background-size: cover;
+  overflow: hidden;
   position: relative;
 
   &::before {
     content: '';
     display: block;
-    padding-top: ($bgi-height / $bgi-width) * 100%;
+    padding-top: ($bgi-ratio-height / $bgi-ratio-width) * 100%;
     width: 100%;
   }
 }
 
-.img--is-on-background__content {
+// Use this class on the containing image to use the background image module with an actual image
+// (without) referencing an image via CSS
+.img--is-in-background__img {
+  position: absolute;
+  top: 0;
+}
+
+.img--is-in-background__content {
   align-items: center;
   bottom: 0;
   display: flex;
