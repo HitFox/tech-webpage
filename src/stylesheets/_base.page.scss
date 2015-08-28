@@ -20,3 +20,12 @@ article {
 }
 
 img { width: 100%; }
+
+figure img {
+  display: block;
+  margin-bottom: .25 * $project-base-measure;
+
+  @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
+
+  @include mq(mediumish) { margin-bottom: $project-base-measure; }
+}
