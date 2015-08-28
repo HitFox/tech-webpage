@@ -1,0 +1,35 @@
+
+
+$bgi-width: 16;
+$bgi-height: 9;
+
+.img--is-on-background {
+  background-image: url('/assets/images/sea-1920.jpg');
+  background-size: cover;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($bgi-height / $bgi-width) * 100%;
+    width: 100%;
+  }
+}
+
+.img--is-on-background__content {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  > * {
+    color: $color-white;
+    text-align: center;
+    width: 90%;
+  }
+}
