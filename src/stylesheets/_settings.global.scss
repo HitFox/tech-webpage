@@ -4,5 +4,6 @@ $project-base-background-color: $color-white;
 $project-base-color: $color-black;
 $project-base-measure: 1.25rem;
 
-
-
+//👇RENAME THIS VARIABLES
+$content-column: 750px; //MOSTLY USED FOR THE BLOG
+$content-column-50: $content-column / 2;
