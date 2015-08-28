@@ -65,3 +65,9 @@ ul li { position: relative;
     @include mq(mediumish) { left: -2 * $project-base-measure; }
   }
 }
+
+figcaption {
+  @include typo($figcaption-typo);
+}
+
+figcaption cite { color: $color-silver; }
