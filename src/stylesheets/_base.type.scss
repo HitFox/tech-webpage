@@ -6,7 +6,8 @@ body {
 }
 
 p,
-ul {
+ul,
+hr {
   margin-bottom: 2 * $project-base-measure;
   @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 5 * $project-base-measure; }
@@ -82,4 +83,14 @@ h1 + .heading-sub { margin-top: -1 * $project-base-measure;
   @include mq(smallish) { margin-top: -1.5 * $project-base-measure; }
 
   @include mq(mediumish) { margin-top: -2 * $project-base-measure; }
+}
+
+hr {
+  background-color: $color-silver;
+  border: 0;
+  height: 1px;
+  position: relative;
+  width: 100vw;
+
+  @media screen and (min-width: $content-column) { left: calc((-100vw + #{$content-column})/2); }
 }
