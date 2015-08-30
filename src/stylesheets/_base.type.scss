@@ -9,7 +9,7 @@ p,
 ul {
   margin-bottom: 2 * $project-base-measure;
   @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
-  @include mq(mediumish) { margin-bottom: 6 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 5 * $project-base-measure; }
 }
 
 h1,
@@ -71,3 +71,15 @@ figcaption {
 }
 
 figcaption cite { color: $color-silver; }
+
+.heading-sub {
+  @include typo($heading-sub-typo);
+  font-style: italic;
+}
+
+h1 + .heading-sub { margin-top: -1 * $project-base-measure;
+
+  @include mq(smallish) { margin-top: -1.5 * $project-base-measure; }
+
+  @include mq(mediumish) { margin-top: -2 * $project-base-measure; }
+}
