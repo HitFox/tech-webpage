@@ -36,37 +36,37 @@ figure img {
 }
 
 article > header {
-  display: flex;
   align-items: center;
+  display: flex;
   padding: 1.75 * $project-base-measure 0;
 }
 
 article > header > p {
-  margin-left: 20px;
-  margin-bottom: 0;
   color: $color-silver;
+  margin-bottom: 0;
+  margin-left: 20px;
 }
 
-article > header > p > a {
-  color: $color-silver;
+article > header >  a {
   background-image: none;
+  color: $color-silver;
 }
 
 hr {
-  width: 100vw;
-  position: relative;
-  left: calc((-100vw + 750px)/2);
-  margin-bottom: 120px;
   background-color: $color-silver;
   border: 0;
   height: 1px;
+  left: calc((-100vw + 750px)/2);
+  margin-bottom: 120px;
+  position: relative;
+  width: 100vw;
 }
 
 .link-icon {
-  width: 1.5 * $project-base-measure;
-  height: 1.5 * $project-base-measure;
   background-image: none;
   background-size: cover;
+  height: 1.5 * $project-base-measure;
+  width: 1.5 * $project-base-measure;
 
 }
 
