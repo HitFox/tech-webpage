@@ -52,14 +52,8 @@ article > header >  a {
   color: $color-silver;
 }
 
-hr {
-  background-color: $color-silver;
-  border: 0;
-  height: 1px;
-  left: calc((-100vw + 750px)/2);
-  margin-bottom: 120px;
-  position: relative;
-  width: 100vw;
+.author {
+  @include typo($author-typo);
 }
 
 .link-icon {
