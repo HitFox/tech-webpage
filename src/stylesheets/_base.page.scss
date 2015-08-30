@@ -29,3 +29,54 @@ figure img {
 
   @include mq(mediumish) { margin-bottom: $project-base-measure; }
 }
+
+.img--is-rounded {
+  border-radius: 50%;
+  width: 2.5 * $project-base-measure;
+}
+
+article > header {
+  display: flex;
+  align-items: center;
+  padding: 1.75 * $project-base-measure 0;
+}
+
+article > header > p {
+  margin-left: 20px;
+  margin-bottom: 0;
+  color: $color-silver;
+}
+
+article > header > p > a {
+  color: $color-silver;
+  background-image: none;
+}
+
+hr {
+  width: 100vw;
+  position: relative;
+  left: calc((-100vw + 750px)/2);
+  margin-bottom: 120px;
+  background-color: $color-silver;
+  border: 0;
+  height: 1px;
+}
+
+.link-icon {
+  width: 1.5 * $project-base-measure;
+  height: 1.5 * $project-base-measure;
+  background-image: none;
+  background-size: cover;
+
+}
+
+.icon-twitter {
+  background-image: url('/assets/svg/twitter.svg');
+  background-position: 0 0;
+  margin-left: auto;
+}
+
+.icon-facebook {
+  background-image: url('/assets/svg/facebook.svg');
+  background-position: 0 -3px;
+}
