@@ -11,15 +11,15 @@ $bgi-ratio-height: 9;
   // background-image: url('/assets/images/sea-1920.jpg');
   background-size: cover;
   left: -$content-column-padding;
-  overflow: hidden;
   position: relative;
   width: 100vw;
 
   &::before {
-    content: '';
     display: block;
     padding-top: ($bgi-ratio-height / $bgi-ratio-width) * 100%;
     width: 100%;
+
+    @include mq(smallish) { content: ''; }
   }
 
   @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
@@ -31,8 +31,14 @@ $bgi-ratio-height: 9;
 // Use this class on the containing image to use the background image module with an actual image
 // (without) referencing an image via CSS
 .img--is-in-background__img {
-  position: absolute;
+  height: 100%;
+  margin-bottom: 2 * $project-base-measure;
   top: 0;
+
+  @include mq(smallish) {
+    margin-bottom: 0;
+    position: absolute;
+  }
 }
 
 .img--is-in-background__content {
@@ -42,13 +48,13 @@ $bgi-ratio-height: 9;
   flex-direction: column;
   justify-content: center;
   left: 0;
-  position: absolute;
   right: 0;
   top: 0;
+  @include mq(smallish) { position: absolute; }
 
   > * {
-    color: $color-white;
     text-align: center;
     width: 90%;
+    @include mq(smallish) { color: $color-white; }
   }
 }
