@@ -10,8 +10,10 @@ $bgi-ratio-height: 9;
 .img--is-in-background {
   // background-image: url('/assets/images/sea-1920.jpg');
   background-size: cover;
+  left: -$content-column-padding;
   overflow: hidden;
   position: relative;
+  width: 100vw;
 
   &::before {
     content: '';
@@ -19,6 +21,11 @@ $bgi-ratio-height: 9;
     padding-top: ($bgi-ratio-height / $bgi-ratio-width) * 100%;
     width: 100%;
   }
+
+  @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
+
 }
 
 // Use this class on the containing image to use the background image module with an actual image

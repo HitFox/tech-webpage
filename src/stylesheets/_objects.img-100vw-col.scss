@@ -1,10 +1,15 @@
 
 
 .img--is-stretched-100vw {
+  left: -$content-column-padding;
   position: relative;
   width: 100vw;
 
 //WHEN THE VIEWPORT EXCEEDS THE WIDTH OF THE CONTENT COLUMN THE IMAGE GETS MOVED TO THE LEFT BY HALF
 //OF THE VIEWPORT + HALF OF THE CONTENT COLUMNS WIDTH
-  @media screen and (min-width: $content-column) { left: calc(-50vw + #{$content-column-50}); }
+  @media screen and (min-width: $content-column) { left: calc(-50vw + #{$content-column-50} - #{$content-column-padding}); }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) {
+    left: calc(-50vw + #{$content-column-50});
+  }
 }
