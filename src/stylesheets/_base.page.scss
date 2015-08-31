@@ -20,7 +20,7 @@ article {
   padding-right: $content-column-padding;
   width: 100%;
 
-  @media screen and (min-width: 796px) {
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) {
     padding-left: 0;
     padding-right: 0;
   }
