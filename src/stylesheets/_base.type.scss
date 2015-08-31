@@ -16,7 +16,7 @@ hr {
 h1,
 h2,
 h3,
-h4 { font-family: $ff-body-bold; }
+h4 { font-family: $ff-headline; }
 
 h1 {
   @include typo($heading1-typo);
@@ -67,9 +67,7 @@ ul li { position: relative;
   }
 }
 
-figcaption {
-  @include typo($figcaption-typo);
-}
+figcaption { @include typo($figcaption-typo); }
 
 figcaption cite { color: $color-silver; }
 
@@ -89,8 +87,13 @@ hr {
   background-color: $color-silver;
   border: 0;
   height: 1px;
+  left: -$content-column-padding;
   position: relative;
   width: 100vw;
 
-  @media screen and (min-width: $content-column) { left: calc((-100vw + #{$content-column})/2); }
+  @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
 }
+
+.meta { @include typo($author-typo); }
