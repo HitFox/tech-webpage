@@ -1,4 +1,4 @@
-import bubbles from './_bubbles.js';
+import bubbles from './_bubbles';
 
 window.picturefill = require('picturefill');
 document.createElement( 'picture' );

@@ -7,45 +7,54 @@ const START_Y =  75;
 const STEP_X  = SIZE * 1.7;
 const STEP_Y  = SIZE * 0.7;
 
-function horizontal(node, index) {
-  const CONTAINER_WIDTH = window.innerWidth;
-  const BUBBLES_PER_ROW = ~~(CONTAINER_WIDTH / STEP_X);
-  const BUBBLES_IN_DOUBLE_ROW   = 2 * BUBBLES_PER_ROW - 1;
-  const PHYSICAL_INDEX = getPhysicalIndex(index);
+class HorizontalSorter {
+  constructor(nodes){
+    this.nodes = nodes;
+    this.stepX = SIZE * 1.7;
+    this.stepY = SIZE * 0.7;
+  }
 
-  const ROW    = ~~(PHYSICAL_INDEX / BUBBLES_PER_ROW);
-  const COLUMN = ~~(PHYSICAL_INDEX % BUBBLES_PER_ROW);
-  const EVEN = !!(ROW % 2);
-  const OFFSET_X = (EVEN ? -STEP_X / 4 : STEP_X / 4);
+  resize(){
+    const CONTAINER_WIDTH = window.innerWidth;
+    this.bubblesPerRow = ~~(CONTAINER_WIDTH / this.stepX);
+    this.bubblesInDoubleRow   = 2 * this.bubblesPerRow - 1;
 
-  let x = START_X + COLUMN * STEP_X + OFFSET_X;
-  let y = START_Y + ROW    * STEP_Y;
-  node.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    Array.prototype.forEach.call(this.nodes, ::this._position);
+  }
 
-  function getPhysicalIndex(logicalIndex) {
-    const doubleRowIndex          = ~~(logicalIndex / BUBBLES_IN_DOUBLE_ROW);
-    const logicalIndexInDoubleRow = ~~(logicalIndex % BUBBLES_IN_DOUBLE_ROW);
+  _position(node, index) {
+    const PHYSICAL_INDEX = this._getPhysicalIndex(index);
+    const ROW    = ~~(PHYSICAL_INDEX / this.bubblesPerRow);
+    const COLUMN = ~~(PHYSICAL_INDEX % this.bubblesPerRow);
+    const EVEN = !!(ROW % 2);
+    const OFFSET_X = (EVEN ? -this.stepX / 4 : this.stepX / 4);
+
+    let x = START_X + COLUMN * this.stepX + OFFSET_X;
+    let y = START_Y + ROW    * this.stepY;
+    node.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+  }
+
+  _getPhysicalIndex(logicalIndex) {
+    const doubleRowIndex          = ~~(logicalIndex / this.bubblesInDoubleRow);
+    const logicalIndexInDoubleRow = ~~(logicalIndex % this.bubblesInDoubleRow);
     var physicalIndexInDoubleRow;
-    if (logicalIndexInDoubleRow < BUBBLES_PER_ROW - 1) {
+    if (logicalIndexInDoubleRow < this.bubblesPerRow - 1) {
       physicalIndexInDoubleRow = logicalIndexInDoubleRow;
     } else {
-      physicalIndexInDoubleRow = BUBBLES_PER_ROW + (BUBBLES_IN_DOUBLE_ROW - 1 - logicalIndexInDoubleRow);
+      physicalIndexInDoubleRow = this.bubblesPerRow + (this.bubblesInDoubleRow - 1 - logicalIndexInDoubleRow);
     }
-    var physicalIndex = physicalIndexInDoubleRow + doubleRowIndex * 2 * BUBBLES_PER_ROW;
+    var physicalIndex = physicalIndexInDoubleRow + doubleRowIndex * 2 * this.bubblesPerRow;
     return physicalIndex;
   }
 
 }
 
-function reorder(){
-  const bubbles = document.getElementsByClassName('head-bubble');
-  Array.prototype.forEach.call(bubbles, horizontal);
-}
-
 function initialize(){
   $(function(){
-    reorder();
-    $(window).on('resize', throttle(reorder, 500));
+    const bubbles = document.getElementsByClassName('head-bubble');
+    const sorter = new HorizontalSorter(bubbles);
+    sorter.resize();
+    $(window).on('resize', throttle(::sorter.resize, 500));
   });
 }
 
