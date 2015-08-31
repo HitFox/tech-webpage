@@ -13,7 +13,7 @@ html {
 }
 
 //☟TEMP☟
-article {
+.article {
   margin: 0 auto;
   max-width: $content-column;
   padding-left: $content-column-padding;
@@ -30,11 +30,18 @@ img { width: 100%; }
 
 figure img {
   display: block;
+  left: -$content-column-padding;
   margin-bottom: .25 * $project-base-measure;
+  position: relative;
+  width: 100vw;
 
   @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
 
-  @include mq(mediumish) { margin-bottom: $project-base-measure; }
+  @include mq(mediumish) {
+    left: 0;
+    margin-bottom: $project-base-measure;
+    width: 100%;
+  }
 }
 
 .img--is-rounded {
@@ -42,28 +49,30 @@ figure img {
   width: 2.5 * $project-base-measure;
 }
 
-article > header {
+.article__header {
   align-items: center;
   display: flex;
   padding: 1.75 * $project-base-measure 0;
 }
 
-article > header > p {
+.meta {
   color: $color-silver;
   margin-bottom: 0;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-article > header  a {
+.link--has-no-underline {
   background-image: none;
-  color: $color-silver;
+  color: inherit;
 }
 
 .link-icon {
   background-size: contain;
+  display: none;
   height: 1.5 * $project-base-measure;
   width: 1.5 * $project-base-measure;
+  @include mq(smallish) { display: block; }
 }
 
 .icon-twitter {
