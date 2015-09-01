@@ -15,4 +15,6 @@ a {
   @include mq(smallish) { background-position: 0 1.75rem; }
 
   @include mq(mediumish) { background-position: 0 2rem; }
+
+  &:hover { background-image: linear-gradient($color-white 50%, $color-brand 50%); }
 }
