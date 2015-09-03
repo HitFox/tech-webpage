@@ -2,11 +2,11 @@
 
 .teaser {
   background-color: $color-wild-sand;
-  font-size: .666666667em;
-  width: 100%;
-  max-width: calc(90vw - #{$project-base-measure} - #{$content-column-padding});
   display: inline-block;
+  font-size: .666666667em;
   margin-right: $project-base-measure;
+  max-width: calc(90vw - #{$project-base-measure} - #{$content-column-padding});
+  width: 100%;
 
   @media screen and (min-width: 400px) { max-width: calc(85vw - #{$project-base-measure} - #{$content-column-padding}); }
 
@@ -38,11 +38,11 @@
 
 
 .grid--custom-100vw {
-  padding: $content-column-padding;
-  overflow-x: scroll;
-  white-space: nowrap;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: $content-column-padding;
+  white-space: nowrap;
 
   @media screen and (min-width: 1000px) { padding-left: calc((100vw - #{$content-column})/4); }
 }
