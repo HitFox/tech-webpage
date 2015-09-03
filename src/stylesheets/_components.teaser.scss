@@ -17,7 +17,8 @@
 
   @media screen and (min-width: 640px) {
     margin-right: 1.5 * $project-base-measure;
-    max-width: calc(48vw - 1.5 * #{$project-base-measure} - #{$content-column-padding}); }
+    max-width: calc(48vw - 1.5 * #{$project-base-measure} - #{$content-column-padding});
+  }
 
   @media screen and (min-width: 900px) { max-width: 21.875rem; }
 }
@@ -35,7 +36,6 @@
   padding: $project-base-measure;
   white-space: normal;
 }
-
 
 .grid--custom-100vw {
   -webkit-overflow-scrolling: touch;
