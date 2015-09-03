@@ -12,20 +12,6 @@ html {
   overflow-y: scroll;
 }
 
-//☟TEMP☟
-.article {
-  margin: 0 auto;
-  max-width: $content-column;
-  padding-left: $content-column-padding;
-  padding-right: $content-column-padding;
-  width: 100%;
-
-  @media screen and (min-width: $content-column + ($content-column-padding * 2)) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 img { width: 100%; }
 
 figure img {
@@ -44,9 +30,18 @@ figure img {
   }
 }
 
-.img--is-rounded {
-  border-radius: 50%;
-  width: 2.5 * $project-base-measure;
+//☟TEMP☟
+.article {
+  margin: 0 auto;
+  max-width: $content-column;
+  padding-left: $content-column-padding;
+  padding-right: $content-column-padding;
+  width: 100%;
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .article__header {
@@ -55,11 +50,9 @@ figure img {
   padding: 1.75 * $project-base-measure 0;
 }
 
-.meta {
-  color: $color-silver;
-  margin-bottom: 0;
-  margin-left: 20px;
-  margin-right: 20px;
+.img--is-rounded {
+  border-radius: 50%;
+  width: 2.5 * $project-base-measure;
 }
 
 .link--has-no-underline {
@@ -84,28 +77,4 @@ figure img {
 .icon-facebook {
   background-image: url('/assets/svg/facebook.svg');
   background-position: 0 -3px;
-}
-
-.text-on-hr::before {
-  background-color: $color-white;
-  content: 'More to read...';
-  font-family: $ff-headline;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: -.875rem;
-  width: 10rem;
-
-  @include mq(smallish) {
-    top: -.9375rem;
-    width: 11.25rem;
-  }
-
-  @include mq(mediumish) {
-    top: -1.0625rem;
-    width: 12.5rem;
-  }
 }

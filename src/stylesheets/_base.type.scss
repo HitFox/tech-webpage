@@ -88,13 +88,44 @@ hr {
   background-color: $color-silver;
   border: 0;
   height: 1px;
-  left: -$content-column-padding;
   position: relative;
   width: 100vw;
+}
+
+.article > hr {
+  left: -$content-column-padding;
 
   @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
 
   @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
 }
 
-.meta { @include typo($author-typo); }
+.text-on-hr::before {
+  background-color: $color-white;
+  content: 'More to read...';
+  font-family: $ff-headline;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -.875rem;
+  width: 10rem;
+
+  @include mq(smallish) {
+    top: -.9375rem;
+    width: 11.25rem;
+  }
+
+  @include mq(mediumish) {
+    top: -1.0625rem;
+    width: 12.5rem;
+  }
+}
+
+.meta {
+  @include typo($author-typo);
+  color: $color-silver;
+  margin: 0 $project-base-measure 0;
+}
