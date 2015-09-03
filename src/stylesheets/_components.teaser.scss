@@ -1,0 +1,19 @@
+
+
+.teaser {
+  background-color: $color-wild-sand;
+  font-size: .666666667em;
+
+  @include mq(smallish) { font-size: .37037037em;}
+}
+
+.teaser .heading-sub {
+  color: $color-dove-gray;
+  font-size: 1.333333333em;
+
+  @include mq(smallish) { font-size: 2.430000002em;}
+
+  @include mq(mediumish) { font-size: 2.582608698em;}
+}
+
+.teaser__body { padding: $project-base-measure; }
