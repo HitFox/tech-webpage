@@ -73,6 +73,7 @@ figcaption cite { color: $color-silver; }
 
 .heading-sub {
   @include typo($heading-sub-typo);
+  display: block;
   font-style: italic;
 }
 
