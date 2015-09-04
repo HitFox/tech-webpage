@@ -18,3 +18,11 @@ a {
 
   &:hover { background-image: linear-gradient($color-white 50%, $color-brand 50%); }
 }
+
+.global-footer a {
+  background-image: none;
+  color: $color-white;
+  font-weight: 400;
+
+  &:hover { color: $color-brand; }
+}

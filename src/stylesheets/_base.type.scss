@@ -67,6 +67,10 @@ ul li { position: relative;
   }
 }
 
+.global-footer ul { padding-left: 0; }
+
+.global-footer li::before { content: none; }
+
 figcaption { @include typo($figcaption-typo); }
 
 figcaption cite { color: $color-silver; }
