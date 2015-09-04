@@ -1,0 +1,12 @@
+
+
+.accordion__input { display: none; }
+
+.accordion__input:checked ~ .accordion__content { height: auto; }
+
+.accordion__label { cursor: pointer; }
+
+.accordion__content {
+  height: 0;
+  overflow: hidden;
+}
