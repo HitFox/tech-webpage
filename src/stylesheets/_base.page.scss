@@ -65,6 +65,7 @@ figure img {
   display: none;
   height: 1.5 * $project-base-measure;
   width: 1.5 * $project-base-measure;
+
   @include mq(smallish) { display: block; }
 }
 
@@ -72,9 +73,13 @@ figure img {
   background-image: url('/assets/svg/twitter.svg');
   background-position: 0 0;
   margin-left: auto;
+
+  &:hover { background-image: url('/assets/svg/twitter.svg'); }
 }
 
 .icon-facebook {
   background-image: url('/assets/svg/facebook.svg');
   background-position: 0 -3px;
+
+  &:hover { background-image: url('/assets/svg/facebook.svg'); }
 }
