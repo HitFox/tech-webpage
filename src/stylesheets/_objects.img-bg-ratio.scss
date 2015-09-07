@@ -8,7 +8,7 @@ $bgi-ratio-width: 16;
 $bgi-ratio-height: 9;
 
 .img--is-in-background {
-  background-size: cover;
+  // background-size: cover;
   left: -$content-column-padding;
   position: relative;
   width: 100vw;
@@ -46,11 +46,13 @@ $bgi-ratio-height: 9;
   left: 0;
   right: 0;
   top: 0;
+
   @include mq(smallish) { position: absolute; }
 
   > * {
     text-align: center;
     width: 90%;
+
     @include mq(smallish) { color: $color-white; }
   }
 }
