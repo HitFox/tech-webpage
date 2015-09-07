@@ -1,7 +1,6 @@
 
 
 .teaser {
-  background-color: $color-wild-sand;
   display: inline-block;
   font-size: .666666667em;
   margin-right: $project-base-measure;
@@ -27,14 +26,15 @@
   color: $color-dove-gray;
   font-size: 1.333333333em;
 
-  @include mq(smallish) { font-size: 2.430000002em;}
+  @include mq(smallish) { font-size: 2.430000002em; }
 
-  @include mq(mediumish) { font-size: 2.582608698em;}
+  @include mq(mediumish) { font-size: 2.582608698em; }
 }
 
 .teaser__body {
   padding: $project-base-measure;
   white-space: normal;
+  background-color: $color-wild-sand;
 }
 
 .grid--custom-100vw {
@@ -48,3 +48,26 @@
 }
 
 .grid--custom-100vw__inner { display: inline-block; }
+
+.teaser__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: .5 * $project-base-measure;
+
+  @include mq(smallish) { padding-top: .75 * $project-base-measure; }
+
+  @include mq(mediumish) { padding-top: $project-base-measure; }
+}
+
+.teaser__footer .img--is-rounded {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.teaser__footer .meta { font-size: 1.333333333em;
+
+  @include mq(smallish) { font-size: 2.430000002em; }
+
+  @include mq(mediumish) { font-size: 2.35em; }
+}
