@@ -32,9 +32,9 @@
 }
 
 .teaser__body {
+  background-color: $color-wild-sand;
   padding: $project-base-measure;
   white-space: normal;
-  background-color: $color-wild-sand;
 }
 
 .grid--custom-100vw {
@@ -50,9 +50,9 @@
 .grid--custom-100vw__inner { display: inline-block; }
 
 .teaser__footer {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: .5 * $project-base-measure;
 
   @include mq(smallish) { padding-top: .75 * $project-base-measure; }
@@ -61,8 +61,8 @@
 }
 
 .teaser__footer .img--is-rounded {
-  width: 1.875rem;
   height: 1.875rem;
+  width: 1.875rem;
 }
 
 .teaser__footer .meta { font-size: 1.333333333em;
