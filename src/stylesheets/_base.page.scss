@@ -90,3 +90,15 @@ figure img {
 
   &:hover { background-image: url('/assets/svg/facebook.svg'); }
 }
+
+.bgc--is-turquoise { background-color: $color-turquoise; }
+
+.bgc--is-black { background-color: $color-black; }
+
+.bgc--is-yellow { background-color: $color-bright-sun; }
+
+.bgc--is-blue { background-color: $color-royal-blue; }
+
+.bgc--is-lightblue { background-color: $color-polar; }
+
+.c--is-white { color: $color-white; }
