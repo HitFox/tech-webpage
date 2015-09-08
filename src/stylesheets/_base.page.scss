@@ -58,6 +58,11 @@ figure img {
 .link--has-no-underline {
   background-image: none;
   color: inherit;
+
+  &:hover {
+    background-image: none;
+    opacity: .7;
+  }
 }
 
 .link-icon {
@@ -67,6 +72,8 @@ figure img {
   width: 1.5 * $project-base-measure;
 
   @include mq(smallish) { display: block; }
+
+  &:hover { opacity: .7; }
 }
 
 .icon-twitter {
