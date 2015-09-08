@@ -1,0 +1,6 @@
+
+
+.grid__item { padding: 2 * $project-base-measure $project-base-measure $project-base-measure $gutter + 23px;
+
+  @include mq(smallish) { padding: 4*$project-base-measure 2*$project-base-measure 2*$project-base-measure $gutter + 46px; }
+}
