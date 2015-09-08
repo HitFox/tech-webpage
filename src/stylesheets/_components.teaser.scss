@@ -71,3 +71,7 @@
 
   @include mq(mediumish) { font-size: 2.35em; }
 }
+
+.teaser__a:hover,
+.teaser__a:hover + .teaser__body,
+.teaser__a:hover ~ .teaser__footer { opacity: .7; }
