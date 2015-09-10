@@ -78,9 +78,13 @@ ul li { position: relative;
 ol { counter-reset: section; }
 
 ol li {
-  left: -1.3 * $project-base-measure;
+  left: -1.4 * $project-base-measure;
   list-style: none;
   position: relative;
+
+  @include mq(smallish) { left: -1.6 * $project-base-measure; }
+
+  @include mq(mediumish) { left: -2.1 * $project-base-measure; }
 
   &::before {
     content: counters(section, '.')'.';
@@ -125,6 +129,14 @@ figcaption cite { color: $color-silver; }
   @include typo($heading-sub-typo);
   display: block;
   font-style: italic;
+}
+
+p + ul,
+p + ol { margin-top: -$project-base-measure;
+
+  @include mq(smallish) { margin-top: -2.5 * $project-base-measure; }
+
+  @include mq(mediumish) { margin-top: -3 * $project-base-measure; }
 }
 
 h1 + .heading-sub { margin-top: -1 * $project-base-measure;
