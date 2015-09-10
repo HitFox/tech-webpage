@@ -1,0 +1,64 @@
+
+// Sass Maps to define font-sizes and line-heights across breakpoints,
+// These maps are usable with the `font-size` Mixin.
+
+// | tag    | bp1  | bp2  | bp3  |
+// |--------|------|------|------|
+// | <body> | 18px | 20px | 23px |
+// | <h1>   | 27px | 54px | 70px |
+// | <h2>   | 23px | 27px | 29px |
+// | <h3>   | 20px | 24px | 28px |
+// | <h4>   | 18px | 20px | 23px |
+
+// em values get calculated based on the body size (18px, 20px, 23px)
+
+$ff-body: Lato, sans-serif;
+$ff-headline: Sailec, sans-serif;
+
+$paragraph-typo: (
+  null: (1.125em, 1.666666667),
+  smallish: (1.25em, 1.6),
+  mediumish: (1.4375em, 1.652173913)
+);
+
+$heading1-typo: (
+  null: (1.5em, 1),
+  smallish: (2.7em, 1),
+  mediumish: (3.043478261em, 1)
+);
+
+$heading2-typo: (
+  null: (1.277777778em, 1.304347826),
+  smallish: (1.35em, 1.3),
+  mediumish: (1.260869565em, 1.310344828)
+);
+
+$heading3-typo: (
+  null: (1.111111111em, 1.5),
+  smallish: (1.2em, 1.4),
+  mediumish: (1.130434783em, 1.461538462)
+);
+
+$heading4-typo: (
+  null: (1em, 1.666666667),
+  smallish: (1em, 1.6),
+  mediumish: (1em, 1.652173913)
+);
+
+$heading-sub-typo: (
+  null: (1.166666667em, 1.380952381),
+  smallish: (1.8em, 1.3),
+  mediumish: (2em, 1.260869565)
+);
+
+$figcaption-typo: (
+  null: .888888889em,
+  smallish: .9em,
+  mediumish: .782608696em
+);
+
+$author-typo: (
+  null: (.888888889em, 1.1875),
+  smallish: (.9em, 1.2),
+  mediumish: (.913043478em, 1.1904)
+);

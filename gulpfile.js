@@ -21,6 +21,8 @@ var sourcemaps   = require('gulp-sourcemaps');
 
 var path             = require('path');
 var webpack          = require('webpack');
+
+var postProcessorsDev   = [autoprefixer({browsers: ['last 3 version']})];
 var postProcessors   = [autoprefixer({browsers: ['last 3 version']}), mqpacker, csswring];
 
 var BASE             = 'src/';
@@ -30,9 +32,21 @@ var VIEW_FILES       = 'src/views/**/*';
 var JAVASCRIPT_FILES = 'src/javascripts/*.js';
 var OUTPUT_FOLDER    = 'public/';
 
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+
 function replace() {
   var manifest = gulp.src(OUTPUT_FOLDER + 'rev-manifest.json');
   return revReplace({manifest: manifest});
+}
+
+function errorHandler(label) {
+  return function handleError(error) {
+    gutil.log(gutil.colors.red(label + ' error:'), error.message);
+    this.emit('end');
+  };
 }
 
 gulp.task('assets:development', function(){
@@ -56,9 +70,9 @@ gulp.task('assets:production', function(){
 gulp.task('css:development', function () {
   return gulp.src(STYLESHEET_FILES, {base: BASE})
     .pipe(sourcemaps.init())
-    .pipe(sass()
+    .pipe(sass(sassOptions)
        .on('error', sass.logError))
-    .pipe(postcss(postProcessors))
+    .pipe(postcss(postProcessorsDev))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(OUTPUT_FOLDER))
     .pipe(livereload());
@@ -118,6 +132,7 @@ gulp.task('html:development', function(){
 
   return gulp.src([VIEW_FILES, '!**/_*'])
     .pipe(gif('*.jade', jade(jadeOptions)))
+    .on('error', errorHandler('Jade'))
     .pipe(gulp.dest(OUTPUT_FOLDER))
     .pipe(livereload());
 });

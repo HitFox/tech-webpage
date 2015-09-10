@@ -1,0 +1,28 @@
+
+
+a {
+  background-image: linear-gradient($color-white 50%, $color-silver 50%);
+  background-position: 0 1.5rem;
+  background-repeat: repeat-x;
+  background-size: .0625rem .1875rem;
+  color: $color-brand;
+  display: inline-block;
+  font-family: $ff-body;
+  font-weight: 700;
+  line-height: 1.66;
+  text-decoration: none;
+
+  @include mq(smallish) { background-position: 0 1.75rem; }
+
+  @include mq(mediumish) { background-position: 0 2rem; }
+
+  &:hover { background-image: linear-gradient($color-white 50%, $color-brand 50%); }
+}
+
+.global-footer a {
+  background-image: none;
+  color: $color-white;
+  font-weight: 400;
+
+  &:hover { color: $color-brand; }
+}

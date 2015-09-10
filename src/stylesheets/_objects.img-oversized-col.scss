@@ -1,0 +1,19 @@
+
+
+$oversize-value: 120%;
+
+.img--is-oversized {
+
+  @media screen and (min-width: $content-column + 1px) {
+    left: calc(((-100vw + #{$content-column}) / 2) - 23px);
+    position: relative;
+    width: 100vw;
+  }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
+
+  @media screen and (min-width: $content-column * 1.2 + 1px) {
+    left: calc((-#{$oversize-value} + 100%)/2);
+    width: $oversize-value;
+  }
+}

@@ -1,0 +1,87 @@
+
+
+.global-footer {
+  background-color: $color-black;
+  color: $color-silver;
+  font-size: .888em;
+  padding: 3 * $content-column-padding $content-column-padding;
+
+  @media screen and (min-width: 50rem) { padding-top: 5 * $content-column-padding; }
+
+  @media screen and (min-width: 56.25rem) {
+    padding-left: 2 * $content-column-padding;
+    padding-right: 2 * $content-column-padding;
+  }
+}
+
+.global-footer__inner {
+
+  @media screen and (min-width: 50rem) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: 62.5rem) {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  @media screen and (min-width: 75rem) { max-width: 68.75rem;}
+}
+
+.global-footer .accordion__content { margin-bottom: 0;
+
+  @media screen and (min-width: 50rem) {
+    height: auto;
+    margin-bottom: $project-base-measure;
+  }
+}
+
+.global-footer .accordion__label {
+  border-bottom: 1px solid $color-silver;
+  display: block;
+  margin-bottom: .5 * $project-base-measure;
+  padding-bottom: .25 * $project-base-measure;
+  position: relative;
+
+  &::before {
+    background-image: url('../assets/svg/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    height: .75 * $project-base-measure;
+    position: absolute;
+    right: .5 * $project-base-measure;
+    top: .25 * $project-base-measure;
+    transform: rotate(180deg);
+    width: .75 * $project-base-measure;
+
+    @include mq(smallish) {
+      height: $project-base-measure;
+      width: $project-base-measure;
+    }
+
+    @media screen and (min-width: 50rem) { content: none; }
+  }
+
+  @media screen and (min-width: 50rem) {
+    border-bottom: 0;
+    cursor: auto;
+  }
+}
+
+.global-footer .accordion__input:checked ~ .accordion__label::before {
+  top: .5 * $project-base-measure;
+  transform: rotate(0deg);
+}
+
+.global-footer .accordion__input:checked ~ .accordion__content { margin-bottom: $project-base-measure; }
+
+.global-footer .byline {
+  display: block;
+  margin-top: 4 * $project-base-measure;
+  text-align: center;
+
+  @media screen and (min-width: 50rem) { width: 100%; }
+}

@@ -1,118 +1,37 @@
-@import 'normalize';
-@import 'variables';
-@import 'grid';
-@import 'breakpoints';
-@import 'typography';
-@import 'base';
-@import 'helpers';
-@import 'l-base';
 
-@import 'modules/m-list-squares';
-@import 'modules/m-image';
-@import 'modules/m-nav-main';
-@import 'modules/m-button';
-@import 'modules/m-list-company';
-@import 'modules/m-columns';
-@import 'modules/m-lists';
-@import 'modules/m-partial';
-@import 'modules/m-tables';
-@import 'modules/m-picture-quote';
-@import 'modules/m-logo-content';
-@import 'modules/m-founder-signup';
 
-.list-simple {
-  list-style: none;
-  padding-left: 0;
-}
+//SETTINGS
+@import 'settings.colors';
+@import 'settings.global';
+@import 'settings.type';
+@import 'settings.breakpoints';
 
-.list-simple__sub { font-size: 1em; }
+//TOOLS
+@import 'tools.mixins';
 
-.list__item--social {
-  display: inline-block;
-  margin-right: 2 * $unit-base;
-  margin-top: 2 * $unit-base;
+//GENERIC
+@import './node_modules/inuit-normalize/generic.normalize';
+@import './node_modules/inuit-reset/generic.reset';
+@import 'generic.box-sizing';
 
-  &:last-child { margin-right: 0; }
-}
+//BASE
+@import 'base.page';
+@import 'base.type';
+@import 'base.links';
 
-.link-social {
-  background-size: 50%;
-  display: block;
-  height: 2.125rem;
-  overflow: hidden;
-  text-indent: -9999px;
-  width: 2.125rem;
-}
+//OBJECTS
+@import 'objects.img-100vw-col';
+@import 'objects.img-oversized-col';
+@import 'objects.img-bg-ratio';
+@import 'objects.media';
+@import 'objects.accordion';
 
-.link-social__twitter {
-  background-image: url('/assets/svg/icon-twitter.svg');
-  background-position: center -.75rem; //12px
-  background-repeat: no-repeat;
+//COMPONENTS
+@import 'components.grid';
+@import 'components.grid-adjustments';
+@import 'components.teaser';
+@import 'components.footer';
 
-  &:hover { background-position: center .6875rem;} //11px
-}
+//TRUMPS
 
-.link-social__linkedin {
-  background-image: url('/assets/svg/icon-linkedin.svg');
-  background-position: center -.9375rem; //15px
-  background-repeat: no-repeat;
 
-  &:hover { background-position: center .5rem; } //8px
-}
-
-.link-social__facebook {
-  background-image: url('/assets/svg/icon-facebook.svg');
-  background-position: center -1.85rem; // 30px
-  background-repeat: no-repeat;
-  background-size: 11px;
-
-  &:hover { background-position: center .395rem; } // 6px
-}
-
-.section-bgc { background-color: $color-alabaster; }
-
-.flex-between {
-
-  @include bp(xx) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  > .grid__item {
-
-    @include bp(xx) { display: block; }
-  }
-}
-
-.flex-media {
-
-  @include bp(xx) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  @include bp(xxx) { justify-content: space-around; }
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.section-media__item { margin-bottom: 5 * $unit-base;
-
-  @include bp(x) { margin-bottom: 5 * $unit-base; }
-
-  @include bp(xx) { margin-bottom: 0; }
-
-  &:last-child { margin-bottom: 0;  }
-}
-
-.post--full { margin-bottom: 6 * $unit-base; }
-
-.section-jobs { padding-left: 0 !important; }

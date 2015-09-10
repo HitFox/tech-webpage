@@ -1,0 +1,173 @@
+
+
+body {
+  @include typo($paragraph-typo);
+  font-family: $ff-body;
+}
+
+p,
+ul,
+hr {
+  margin-bottom: 2 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 5 * $project-base-measure; }
+}
+
+h1,
+h2,
+h3,
+h4 { font-family: $ff-headline; }
+
+h1 {
+  @include typo($heading1-typo);
+  margin-bottom: 1 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 1.5 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 2 * $project-base-measure; }
+}
+
+h2 {
+  @include typo($heading2-typo);
+  margin-bottom: .75 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: 1 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 1.5 * $project-base-measure; }
+}
+
+h3 {
+  @include typo($heading3-typo);
+  margin-bottom: .5 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: .75 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: 1 * $project-base-measure; }
+}
+
+h4 {
+  @include typo($heading4-typo);
+  margin-bottom: .25 * $project-base-measure;
+  @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
+  @include mq(mediumish) { margin-bottom: .75 * $project-base-measure; }
+}
+
+ul,
+ol {
+  padding-left: 1.5 * $project-base-measure;
+  @include mq(smallish) { padding-left: 1.75 * $project-base-measure; }
+  @include mq(mediumish) { padding-left: 2.25 * $project-base-measure; }
+}
+
+ul { list-style: none; }
+
+ul li { position: relative;
+
+  &::before {
+    color: $color-silver;
+    content: '→';
+    left: -1.55 * $project-base-measure;
+    position: absolute;
+    @include mq(smallish) { left: -1.8 * $project-base-measure; }
+    @include mq(mediumish) { left: -2.3 * $project-base-measure; }
+  }
+}
+
+ol { counter-reset: section; }
+
+ol li {
+  left: -1.3 * $project-base-measure;
+  list-style: none;
+  position: relative;
+
+  &:before {
+    content: counters(section, '.')'.';
+    counter-increment: section;
+    font-family: $ff-headline;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-right: .5 * $project-base-measure;
+  }
+}
+
+ol li ol {
+  margin-bottom: .25 * $project-base-measure;
+  margin-top: .25 * $project-base-measure;
+
+  @include mq(smallish) {
+    margin-bottom: .5 * $project-base-measure;
+    margin-top: .5 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    margin-bottom: 1.25 * $project-base-measure;
+    margin-top: 1.25 * $project-base-measure;
+  }
+}
+
+ol ol li { left: 0;
+
+  @include mq(smallish) { left: -.2 * $project-base-measure; }
+  @include mq(mediumish) { left: -.5 * $project-base-measure; }
+}
+
+.global-footer ul { padding-left: 0; }
+
+.global-footer li::before { content: none; }
+
+figcaption { @include typo($figcaption-typo); }
+
+figcaption cite { color: $color-silver; }
+
+.heading-sub {
+  @include typo($heading-sub-typo);
+  display: block;
+  font-style: italic;
+}
+
+h1 + .heading-sub { margin-top: -1 * $project-base-measure;
+
+  @include mq(smallish) { margin-top: -1.5 * $project-base-measure; }
+
+  @include mq(mediumish) { margin-top: -2 * $project-base-measure; }
+}
+
+hr {
+  background-color: $color-silver;
+  border: 0;
+  height: 1px;
+  position: relative;
+  width: 100vw;
+}
+
+.article > hr {
+  left: -$content-column-padding;
+
+  @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
+}
+
+.text-on-hr::before {
+  background-color: $color-white;
+  content: 'More to read...';
+  font-family: $ff-headline;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -.875rem;
+  width: 10rem;
+
+  @include mq(smallish) {
+    top: -.9375rem;
+    width: 11.25rem;
+  }
+
+  @include mq(mediumish) {
+    top: -1.0625rem;
+    width: 12.5rem;
+  }
+}
+
+.meta {
+  @include typo($author-typo);
+  color: $color-silver;
+  margin: 0 $project-base-measure 0;
+}

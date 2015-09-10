@@ -1,0 +1,104 @@
+
+
+
+html {
+  background-color: $project-base-background-color;
+  color: $project-base-color;
+  -webkit-font-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  overflow-x: hidden; //TEMP
+  overflow-y: scroll;
+}
+
+img { width: 100%; }
+
+figure img {
+  display: block;
+  left: -$content-column-padding;
+  margin-bottom: .25 * $project-base-measure;
+  position: relative;
+  width: 100vw;
+
+  @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
+
+  @include mq(mediumish) {
+    left: 0;
+    margin-bottom: $project-base-measure;
+    width: 100%;
+  }
+}
+
+//☟TEMP☟
+.article {
+  margin: 0 auto;
+  max-width: $content-column;
+  padding-left: $content-column-padding;
+  padding-right: $content-column-padding;
+  width: 100%;
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.article__header {
+  align-items: center;
+  display: flex;
+  padding: 1.75 * $project-base-measure 0;
+}
+
+.img--is-rounded {
+  border-radius: 50%;
+  width: 2.5 * $project-base-measure;
+}
+
+.link--has-no-underline {
+  background-image: none;
+  color: inherit;
+
+  &:hover {
+    background-image: none;
+    opacity: .7;
+  }
+}
+
+.link-icon {
+  background-size: contain;
+  display: none;
+  height: 1.5 * $project-base-measure;
+  width: 1.5 * $project-base-measure;
+
+  @include mq(smallish) { display: block; }
+
+  &:hover { opacity: .7; }
+}
+
+.icon-twitter {
+  background-image: url('/assets/svg/twitter.svg');
+  background-position: 0 0;
+  margin-left: auto;
+
+  &:hover { background-image: url('/assets/svg/twitter.svg'); }
+}
+
+.icon-facebook {
+  background-image: url('/assets/svg/facebook.svg');
+  background-position: 0 -3px;
+
+  &:hover { background-image: url('/assets/svg/facebook.svg'); }
+}
+
+.bgc--is-turquoise { background-color: $color-turquoise; }
+
+.bgc--is-black { background-color: $color-black; }
+
+.bgc--is-yellow { background-color: $color-bright-sun; }
+
+.bgc--is-blue { background-color: $color-royal-blue; }
+
+.bgc--is-lightblue { background-color: $color-polar; }
+
+.c--is-white { color: $color-white; }

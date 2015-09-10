@@ -1,0 +1,58 @@
+
+// MARKUP
+// div.img--is-in-background
+//   img.img--is-in-background__img
+//   div.img--is-in-background__content
+
+$bgi-ratio-width: 16;
+$bgi-ratio-height: 9;
+
+.img--is-in-background {
+  // background-size: cover;
+  left: -$content-column-padding;
+  position: relative;
+  width: 100vw;
+
+  &::before {
+    display: block;
+    padding-top: ($bgi-ratio-height / $bgi-ratio-width) * 100%;
+    width: 100%;
+
+    @include mq(smallish) { content: ''; }
+  }
+
+  @media screen and (min-width: $content-column) { left: calc(((-100vw + #{$content-column}) / 2) - #{$content-column-padding}); }
+
+  @media screen and (min-width: $content-column + ($content-column-padding * 2)) { left: calc(((-100vw + #{$content-column}) / 2)); }
+}
+
+.img--is-in-background__img {
+  height: 100%;
+  margin-bottom: 2 * $project-base-measure;
+  top: 0;
+
+  @include mq(smallish) {
+    margin-bottom: 0;
+    position: absolute;
+  }
+}
+
+.img--is-in-background__content {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  @include mq(smallish) { position: absolute; }
+
+  > * {
+    text-align: center;
+    width: 90%;
+
+    @include mq(smallish) { color: $color-white; }
+  }
+}
