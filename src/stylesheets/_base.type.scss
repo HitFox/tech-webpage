@@ -67,6 +67,44 @@ ul li { position: relative;
   }
 }
 
+ol { counter-reset: section; }
+
+ol li {
+  left: -1.3 * $project-base-measure;
+  list-style: none;
+  position: relative;
+
+  &:before {
+    content: counters(section, '.')'.';
+    counter-increment: section;
+    font-family: $ff-headline;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-right: .5 * $project-base-measure;
+  }
+}
+
+ol li ol {
+  margin-bottom: .25 * $project-base-measure;
+  margin-top: .25 * $project-base-measure;
+
+  @include mq(smallish) {
+    margin-bottom: .5 * $project-base-measure;
+    margin-top: .5 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    margin-bottom: 1.25 * $project-base-measure;
+    margin-top: 1.25 * $project-base-measure;
+  }
+}
+
+ol ol li { left: 0;
+
+  @include mq(smallish) { left: -.2 * $project-base-measure; }
+  @include mq(mediumish) { left: -.5 * $project-base-measure; }
+}
+
 .global-footer ul { padding-left: 0; }
 
 .global-footer li::before { content: none; }
