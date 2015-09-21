@@ -44,6 +44,7 @@
     "picturefill": "^2.3.1",
     "precommit-hook": "latest",
     "run-sequence": "^1.1.2",
+    "timeago": "^1.4.2",
     "vinyl-named": "^1.1.0",
     "webpack": "~1.9.11",
     "webpack-dev-server": "^1.10.1",
