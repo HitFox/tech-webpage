@@ -34,7 +34,8 @@ var OUTPUT_FOLDER    = 'public/';
 
 var sassOptions = {
   errLogToConsole: true,
-  outputStyle: 'expanded'
+  outputStyle: 'expanded',
+  sourceMapContents: true
 };
 
 function replace() {
