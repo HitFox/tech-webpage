@@ -47,7 +47,7 @@ jade.filters.code = function( block ) {
       .replace( /"/g, '"' )
       .replace( /#/g, '&#35;'  )
       .replace( /\\/g, '\\\\'  )
-      .replace( /\n/g, '\\n'   );
+
 }
 
 function replace() {
