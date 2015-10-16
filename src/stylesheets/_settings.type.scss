@@ -14,6 +14,7 @@
 
 $ff-body: Lato, sans-serif;
 $ff-headline: Sailec, sans-serif;
+$ff-code: Hack, monospace;
 
 $paragraph-typo: (
   null: (1.125em, 1.666666667),
@@ -61,4 +62,10 @@ $author-typo: (
   null: (.888888889em, 1.1875),
   smallish: (.9em, 1.2),
   mediumish: (.913043478em, 1.1904)
+);
+
+$blockquote-typo: (
+  null: 1.111em,
+  smallish: (1.3em, 1.4),
+  mediumish: (1.47826087em, 1.3)
 );

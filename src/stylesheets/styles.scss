@@ -1,5 +1,15 @@
 
 
+// The imports follow the ITCSS methodology. The really really quick version of it is to go from global all the way down to the most specific parts of your Scss.
+// Your Scss files are separated into:
+//   - Settings
+//   - Tools
+//   - Generic
+//   - Base
+//   - Objects
+//   - Components
+//   - Trumps
+
 //SETTINGS
 @import 'settings.colors';
 @import 'settings.global';

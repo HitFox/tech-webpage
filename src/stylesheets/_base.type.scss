@@ -9,8 +9,7 @@ p,
 ul,
 ol,
 hr,
-blockquote,
-pre { margin-bottom: 2 * $project-base-measure;
+blockquote { margin-bottom: 2 * $project-base-measure;
 
   @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 5 * $project-base-measure; }
@@ -267,16 +266,4 @@ blockquote {
   @include mq(smallish) { font-size: .769230769em; }
 
   @include mq(mediumish) { font-size: .676470588em; }
-}
-
-code {
-  font-family: $ff-code;
-  font-size: .9em;
-}
-
-:not(pre) > code {
-  background-color: $color-wild-sand;
-  border: 1px solid $color-silver;
-  border-radius: 2px;
-  padding: .1em .2em;
 }
