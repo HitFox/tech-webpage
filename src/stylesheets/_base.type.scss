@@ -7,8 +7,11 @@ body {
 
 p,
 ul,
-hr {
-  margin-bottom: 2 * $project-base-measure;
+ol,
+hr,
+blockquote,
+pre { margin-bottom: 2 * $project-base-measure;
+
   @include mq(smallish) { margin-bottom: 4 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 5 * $project-base-measure; }
 }
@@ -21,6 +24,7 @@ h4 { font-family: $ff-headline; }
 h1 {
   @include typo($heading1-typo);
   margin-bottom: 1 * $project-base-measure;
+
   @include mq(smallish) { margin-bottom: 1.5 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 2 * $project-base-measure; }
 }
@@ -28,6 +32,7 @@ h1 {
 h2 {
   @include typo($heading2-typo);
   margin-bottom: .75 * $project-base-measure;
+
   @include mq(smallish) { margin-bottom: 1 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 1.5 * $project-base-measure; }
 }
@@ -35,6 +40,7 @@ h2 {
 h3 {
   @include typo($heading3-typo);
   margin-bottom: .5 * $project-base-measure;
+
   @include mq(smallish) { margin-bottom: .75 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: 1 * $project-base-measure; }
 }
@@ -42,6 +48,7 @@ h3 {
 h4 {
   @include typo($heading4-typo);
   margin-bottom: .25 * $project-base-measure;
+
   @include mq(smallish) { margin-bottom: .5 * $project-base-measure; }
   @include mq(mediumish) { margin-bottom: .75 * $project-base-measure; }
 }
@@ -49,6 +56,7 @@ h4 {
 ul,
 ol {
   padding-left: 1.5 * $project-base-measure;
+
   @include mq(smallish) { padding-left: 1.75 * $project-base-measure; }
   @include mq(mediumish) { padding-left: 2.25 * $project-base-measure; }
 }
@@ -62,9 +70,52 @@ ul li { position: relative;
     content: '→';
     left: -1.55 * $project-base-measure;
     position: absolute;
+
     @include mq(smallish) { left: -1.8 * $project-base-measure; }
     @include mq(mediumish) { left: -2.3 * $project-base-measure; }
   }
+}
+
+ol { counter-reset: section; }
+
+ol li {
+  left: -1.4 * $project-base-measure;
+  list-style: none;
+  position: relative;
+
+  @include mq(smallish) { left: -1.6 * $project-base-measure; }
+
+  @include mq(mediumish) { left: -2.1 * $project-base-measure; }
+
+  &::before {
+    content: counters(section, '.')'.';
+    counter-increment: section;
+    font-family: $ff-headline;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-right: .5 * $project-base-measure;
+  }
+}
+
+ol li ol {
+  margin-bottom: .25 * $project-base-measure;
+  margin-top: .25 * $project-base-measure;
+
+  @include mq(smallish) {
+    margin-bottom: .5 * $project-base-measure;
+    margin-top: .5 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    margin-bottom: 1.25 * $project-base-measure;
+    margin-top: 1.25 * $project-base-measure;
+  }
+}
+
+ol ol li { left: 0;
+
+  @include mq(smallish) { left: -.2 * $project-base-measure; }
+  @include mq(mediumish) { left: -.5 * $project-base-measure; }
 }
 
 .global-footer ul { padding-left: 0; }
@@ -81,10 +132,17 @@ figcaption cite { color: $color-silver; }
   font-style: italic;
 }
 
+p + ul,
+p + ol { margin-top: -$project-base-measure;
+
+  @include mq(smallish) { margin-top: -2.5 * $project-base-measure; }
+
+  @include mq(mediumish) { margin-top: -3 * $project-base-measure; }
+}
+
 h1 + .heading-sub { margin-top: -1 * $project-base-measure;
 
   @include mq(smallish) { margin-top: -1.5 * $project-base-measure; }
-
   @include mq(mediumish) { margin-top: -2 * $project-base-measure; }
 }
 
@@ -132,4 +190,93 @@ hr {
   @include typo($author-typo);
   color: $color-silver;
   margin: 0 $project-base-measure 0;
+}
+
+blockquote {
+  @include typo($blockquote-typo);
+  font-family: $ff-headline;
+  padding: $project-base-measure $project-base-measure 0 $project-base-measure;
+  position: relative;
+  text-align: center;
+
+  @include mq(smallish) {
+    padding-left: 1.5 * $project-base-measure;
+    padding-right: 1.5 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    padding-left: 2 * $project-base-measure;
+    padding-right: 2 * $project-base-measure;
+  }
+
+  &::before,
+  &::after {
+    color: $color-brand;
+    font-size: 2.4em;
+    position: absolute;
+    top: 0;
+
+    @include mq(smallish) {
+      font-size: 2.4em;
+      top: -.3 * $project-base-measure;
+    }
+
+    @media screen and (min-width: 900px) {
+      font-size: 3.4em;
+      top: -$project-base-measure;
+    }
+  }
+
+  &::before {
+    content: '“';
+    left: -.6 * $project-base-measure;
+
+    @include mq(smallish) { left: -.6 * $project-base-measure; }
+
+    @media screen and (min-width: 900px) { left: -1.5 * $project-base-measure; }
+
+    @media screen and (min-width: 1000px) { left: -2.5 * $project-base-measure; }
+  }
+
+  &::after {
+    content: '”';
+    right: -.6 * $project-base-measure;
+
+    @include mq(smallish) { right: -.6 * $project-base-measure; }
+
+    @media screen and (min-width: 900px) { right: -1.5 * $project-base-measure; }
+
+    @media screen and (min-width: 1000px) { right: -2.5 * $project-base-measure; }
+  }
+}
+
+.blockquote__p {
+  margin-bottom: .5 * $project-base-measure;
+
+  @include mq(smallish) { margin-bottom: $project-base-measure; }
+
+  @include mq(mediumish) { margin-bottom: 1.5 * $project-base-measure; }
+}
+
+.blockquote__footer {
+  color: $color-silver;
+  font-family: $ff-body;
+  font-size: .9em;
+  font-style: italic;
+
+  @include mq(smallish) { font-size: .769230769em; }
+
+  @include mq(mediumish) { font-size: .676470588em; }
+}
+
+code {
+  font-family: $ff-code;
+  font-size: .9em;
+}
+
+:not(pre) > code {
+  background-color: $color-wild-sand;
+  border: 1px solid $color-silver;
+  border-radius: 2px;
+  padding: .1em .2em;
 }
