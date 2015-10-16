@@ -2,58 +2,33 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: $color-orange;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  tab-size: 2;
-  hyphens: none;
   border: 0;
   border-radius: 0;
+  color: $color-orange;
+  direction: ltr;
+  hyphens: none;
   padding: 0;
+  tab-size: 2;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-/* Code blocks */
+//Code blocks
 pre[class*="language-"] {
-  overflow: auto;
   border: 1px solid $color-silver;
   border-radius: 2px;
+  overflow: auto;
 }
-
-// :not(pre) > code[class*="language-"],
-// pre[class*="language-"] { background: #f5f2f0; }
-
-/* Inline code */
-// :not(pre) > code[class*="language-"] {
-//   padding: .1em;
-//   border-radius: .3em;
-// }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
-.token.cdata { color: slategray; }
+.token.cdata { color: $color-silver; }
 
-.token.punctuation { color: #999; }
+.token.punctuation { color: $color-black; }
 
 .namespace { opacity: .7; }
 
@@ -76,16 +51,13 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string {
-  color: #a67f59;
-  background: hsla(0, 0%, 100%, .5);
-}
+.style .token.string { color: $color-black; }
 
 .token.atrule,
 .token.attr-value,
-.token.keyword { color: #07a; }
+.token.keyword { color: $color-orange; }
 
-.token.function { color: #DD4A68; }
+.token.function { color: $color-dove-gray; }
 
 .token.regex,
 .token.important,
@@ -98,52 +70,90 @@ pre[class*="language-"] {
 
 .token.entity { cursor: help; }
 
+$codeblock-padding: 1rem;
+$codeblock-padding--smallish: 1.25rem;
+$codeblock-padding--mediumish: 1.75rem;
+
 pre.line-numbers {
-  position: relative;
-  padding-left: 4 * $project-base-measure;
   counter-reset: linenumber;
-  line-height: 34.1999px;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  padding-bottom: $codeblock-padding;
+  padding-left: 2.7 * $project-base-measure;
+  padding-top: $codeblock-padding;
+  position: relative;
+
+  @include mq(smallish) {
+    padding-bottom: $codeblock-padding--smallish;
+    padding-left: 3.3 * $project-base-measure;
+    padding-top: $codeblock-padding--smallish;
+  }
+
+  @include mq(mediumish) {
+    padding-bottom: $codeblock-padding--mediumish;
+    padding-left: 4 * $project-base-measure;
+    padding-top: $codeblock-padding--mediumish;
+  }
 }
 
 pre.line-numbers > code {
+  line-height: inherit;
   position: relative;
 }
 
 .line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: -38px;
-  font-size: 100%;
-  bottom: 0;
-  left: -4em;
-  width: 3em; /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
   border-right: 1px solid #999;
+  bottom: 0;
+  font-size: 100%;
+  height: calc(100% + 4.93824375rem);
+  left: -3 * $project-base-measure;
+  letter-spacing: -1px;
+  line-height: 1.9;
+  pointer-events: none;
+  position: absolute;
+  top: -1.3125rem;
   user-select: none;
-  height: calc(100% + 3.817em);
+  width: 3rem;
+
+  @include mq(smallish) {
+    left: -3.6 * $project-base-measure;
+    line-height: 1.8;
+    top: -1.5625rem;
+    width: 3.4rem;
+  }
+
+  @include mq(mediumish) {
+    left: -4.5 * $project-base-measure;
+    line-height: 1.77;
+    top: -2.125rem;
+    width: 4rem;
+  }
 }
 
 .line-numbers-rows > span {
-  pointer-events: none;
-  display: block;
-  counter-increment: linenumber;
   background-color: #FBFBFB;
+  counter-increment: linenumber;
+  display: block;
+  pointer-events: none;
 }
 
-.line-numbers-rows > span:first-of-type {
-  padding-top: 1.7em;
+.line-numbers-rows > span:first-of-type { padding-top: $codeblock-padding;
+
+  @include mq(smallish) { padding-top: $codeblock-padding--smallish; }
+
+  @include mq(mediumish) { padding-top: $codeblock-padding--mediumish; }
 }
 
-.line-numbers-rows > span:last-of-type {
-  padding-bottom: 1.7em;
+.line-numbers-rows > span:last-of-type { padding-bottom: $codeblock-padding;
+
+  @include mq(smallish) {  padding-bottom: $codeblock-padding--smallish; }
+
+  @include mq(mediumish) { padding-bottom: $codeblock-padding--mediumish; }
+
 }
 
 .line-numbers-rows > span:before {
-  content: counter(linenumber);
   color: #898989;
+  content: counter(linenumber);
   display: block;
-  padding-right: 0.8em;
+  padding-right: .8em;
   text-align: right;
 }
