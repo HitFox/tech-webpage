@@ -2,7 +2,7 @@
 
 $oversize-value: 120%;
 
-.img--is-oversized {
+.el--is-oversized {
 
   @media screen and (min-width: $content-column + 1px) {
     left: calc(((-100vw + #{$content-column}) / 2) - 23px);
