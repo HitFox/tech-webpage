@@ -13,7 +13,8 @@ var autoprefixer = require('autoprefixer');
 var mqpacker     = require('css-mqpacker');
 var csswring     = require('csswring');
 var gif          = require('gulp-if');
-var jade         = require('gulp-jade');
+var jade         = require('jade')
+var gulpJade     = require('gulp-jade');
 var fs           = require('fs');
 var named        = require('vinyl-named');
 var revReplace   = require('gulp-rev-replace');
@@ -34,8 +35,20 @@ var OUTPUT_FOLDER    = 'public/';
 
 var sassOptions = {
   errLogToConsole: true,
-  outputStyle: 'expanded'
+  outputStyle: 'expanded',
+  sourceMapContents: true
 };
+
+jade.filters.code = function( block ) {
+  return block
+      .replace( /&/g, '&amp;'  )
+      .replace( /</g, '&lt;'   )
+      .replace( />/g, '&gt;'   )
+      .replace( /"/g, '"' )
+      .replace( /#/g, '&#35;'  )
+      .replace( /\\/g, '\\\\'  )
+      .replace( /\n/g, '\\n'   );
+}
 
 function replace() {
   var manifest = gulp.src(OUTPUT_FOLDER + 'rev-manifest.json');
@@ -122,6 +135,7 @@ gulp.task('javascript:production', function(){
 
 gulp.task('html:development', function(){
   var jadeOptions = {
+    jade: jade,
     locals: {
       develop: true,
       LRScript: "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':" + //eslint-disable-line quotes
@@ -131,7 +145,7 @@ gulp.task('html:development', function(){
   };
 
   return gulp.src([VIEW_FILES, '!**/_*'])
-    .pipe(gif('*.jade', jade(jadeOptions)))
+    .pipe(gif('*.jade', gulpJade(jadeOptions)))
     .on('error', errorHandler('Jade'))
     .pipe(gulp.dest(OUTPUT_FOLDER))
     .pipe(livereload());
@@ -139,11 +153,12 @@ gulp.task('html:development', function(){
 
 gulp.task('html:production', function(){
   var jadeOptions = {
+    jade: jade,
     locals: { develop: false }
   };
 
   return gulp.src([VIEW_FILES, '!**/_*'])
-    .pipe(gif('*.jade', jade(jadeOptions)))
+    .pipe(gif('*.jade', gulpJade(jadeOptions)))
     .pipe(replace())
     .pipe(gulp.dest(OUTPUT_FOLDER));
 });
