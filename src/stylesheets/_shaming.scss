@@ -1,0 +1,77 @@
+
+
+h2 > a {
+  background-image: none !important;
+  line-height: inherit !important;
+}
+
+.list__time { color: $color-silver;
+
+  @include mq(smallish) { font-size: .9em; }
+}
+
+.list__a {
+  background-image: none;
+  color: $color-silver;
+  font-weight: 400;
+
+  &:hover {
+    background-image: inherit;
+    opacity: .7;
+  }
+}
+
+.list--is-wo-bullets__el h2 {
+  @include mq(mediumish) { width: 75%; }
+}
+
+.list__header {
+  @include mq(mediumish) {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.link--has-image {
+  background-image: none;
+  background-image: url('../assets/svg/hftd-logo.svg');
+  color: $color-black;
+  padding-left: 60px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  background-position: -74px 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-weight: 400;
+
+  @include mq(smallish) {
+    padding-left: 70px;
+    background-position: -85px 0;
+  }
+
+  @include mq(mediumish) {
+    background-position: -94px 0;
+  }
+  
+  &:hover {
+    background-image: url('../assets/svg/hftd-logo.svg');
+  }
+}
+
+.global-header {
+  margin-bottom: 2 * $project-base-measure;
+  margin-top: 2 * $project-base-measure;
+  padding-top: $project-base-measure;
+  padding-left: 23px;
+  padding-right: 23px;
+
+  @include mq(smallish) {
+    margin-bottom: 4 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    margin-bottom: 8 * $project-base-measure;
+  }
+}
