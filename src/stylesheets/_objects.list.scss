@@ -1,0 +1,5 @@
+
+
+.list--is-wo-bullets { padding-left: 0; }
+
+.list--is-wo-bullets__el::before { content: none; }
