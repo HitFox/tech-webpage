@@ -1,90 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Manager" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-233 324 145 145"
-	 style="enable-background:new -233 324 145 145;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFD41A;}
-	.st1{filter:url(#Adobe_OpacityMaskFilter);}
-	.st2{clip-path:url(#SVGID_2_);fill:#FFFFFF;}
-	.st3{clip-path:url(#SVGID_2_);mask:url(#mask-4_1_);fill:#FFFFFF;}
-	.st4{filter:url(#Adobe_OpacityMaskFilter_1_);}
-	.st5{clip-path:url(#SVGID_2_);mask:url(#mask-6_1_);fill:#FFFFFF;}
-	.st6{filter:url(#Adobe_OpacityMaskFilter_2_);}
-	.st7{clip-path:url(#SVGID_2_);mask:url(#mask-8_1_);fill:#FFFFFF;}
-	.st8{filter:url(#Adobe_OpacityMaskFilter_3_);}
-	.st9{clip-path:url(#SVGID_2_);mask:url(#mask-10_1_);fill:#FFFFFF;}
-	.st10{filter:url(#Adobe_OpacityMaskFilter_4_);}
-	.st11{clip-path:url(#SVGID_2_);mask:url(#mask-12_1_);fill:#333333;}
-	.st12{clip-path:url(#SVGID_2_);fill:#333333;}
-</style>
-<circle id="circle--yellow" class="st0" cx="-160.5" cy="396.5" r="72.5"/>
-<g>
-	<defs>
-		<circle id="SVGID_1_" cx="-160.5" cy="396.5" r="72.5"/>
-	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-	</clipPath>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-247.4" y="415.2" width="39.1" height="30.9">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="-247.4" y="415.2" width="39.1" height="30.9" id="mask-4_1_">
-		<g class="st1">
-			<circle id="path-3_1_" class="st2" cx="-160.5" cy="396.5" r="72.5"/>
-		</g>
-	</mask>
-	<path id="checkmark--white-lb" class="st3" d="M-233.4,446l-13.9-13.9l5.7-5.7l8.3,8.3l19.6-19.6l5.7,5.7L-233.4,446z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="-129.3" y="373.4" width="18.9" height="15.6">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="-129.3" y="373.4" width="18.9" height="15.6" id="mask-6_1_">
-		<g class="st4">
-			<circle id="path-5_1_" class="st2" cx="-160.5" cy="396.5" r="72.5"/>
-		</g>
-	</mask>
-	<path id="checkmark--white-rt" class="st5" d="M-122.4,388.9l-6.8-6.8l3.5-3.5l3.3,3.3l8.5-8.5l3.5,3.5L-122.4,388.9z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="-193.3" y="332.9" width="24.1" height="19">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="-193.3" y="332.9" width="24.1" height="19" id="mask-8_1_">
-		<g class="st6">
-			<circle id="path-7_1_" class="st2" cx="-160.5" cy="396.5" r="72.5"/>
-		</g>
-	</mask>
-	<path id="chechmark--white-tl" class="st7" d="M-184.7,351.9l-8.6-8.6l3.5-3.5l5,5l12-12l3.5,3.5L-184.7,351.9z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_3_" filterUnits="userSpaceOnUse" x="-115.8" y="395.1" width="35" height="28.7">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="-115.8" y="395.1" width="35" height="28.7" id="mask-10_1_">
-		<g class="st8">
-			<circle id="path-9_1_" class="st2" cx="-160.5" cy="396.5" r="72.5"/>
-		</g>
-	</mask>
-	<path id="checkmark--white-br" class="st9" d="M-103.1,423.8l-12.6-12.6l6.4-6.4l6.3,6.3l15.9-15.9l6.4,6.4L-103.1,423.8z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_4_" filterUnits="userSpaceOnUse" x="-196" y="359.5" width="71" height="115.5">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="-196" y="359.5" width="71" height="115.5" id="mask-12_1_">
-		<g class="st10">
-			<circle id="path-11_1_" class="st2" cx="-160.5" cy="396.5" r="72.5"/>
-		</g>
-	</mask>
-	<path id="microphone" class="st11" d="M-160.5,359.5c4.3,0,7.8,1.4,10.7,4.3c2.8,2.8,4.3,6.5,4.5,10.9V405
-		c-0.2,4.3-1.7,7.8-4.5,10.7s-6.4,4.3-10.7,4.3c-4.3,0-7.8-1.4-10.7-4.3c-2.8-2.8-4.3-6.4-4.5-10.7v-30.3c0.2-4.4,1.7-8.1,4.5-10.9
-		C-168.3,360.9-164.8,359.5-160.5,359.5L-160.5,359.5L-160.5,359.5z M-125,405c-0.2,8.9-3.1,16.5-8.7,22.9
-		c-5.6,6.3-12.9,10.3-21.8,11.9V475h-10v-35.3c-8.9-1.6-16.2-5.5-21.8-11.9c-5.6-6.3-8.5-14-8.7-22.9h10c0.2,7,2.7,12.9,7.5,17.6
-		c4.8,4.7,10.8,7.1,18,7.3c7.1-0.2,13.1-2.6,18-7.3c4.8-4.7,7.3-10.6,7.5-17.6H-125L-125,405z"/>
-	<path id="checkmark--black" class="st12" d="M-128.5,364.5l-14.6-14.6l7.1-7.1l7.5,7.5l18.9-18.9l7.1,7.1L-128.5,364.5z"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 145 145">
+  <defs>
+    <circle id="clipPath-circle" cx="72.5" cy="72.5" r="72.5"/>
+  </defs>
+  <circle fill="#FFD41A" cx="72.5" cy="72.5" r="72.5"/>
+  <clipPath id="clipPath-actual">
+    <use xlink:href="#clipPath-circle"/>
+  </clipPath>
+  <path clip-path="url(#clipPath-actual)" fill="#fff" d="M-0.4,122l-13.9-13.9l5.7-5.7l8.3,8.3l19.6-19.6l5.7,5.7L-0.4,122z"/>
+  <path fill="#fff" d="M110.6,64.9l-6.8-6.8l3.5-3.5l3.3,3.3l8.5-8.5l3.5,3.5L110.6,64.9z"/>
+  <path fill="#fff" d="M48.3,27.9l-8.6-8.6l3.5-3.5l5,5l12-12l3.5,3.5L48.3,27.9z"/>
+  <path clip-path="url(#clipPath-actual)" fill="#fff" d="M129.9,99.8l-12.6-12.6l6.4-6.4l6.3,6.3l15.9-15.9l6.4,6.4L129.9,99.8z"/>
+  <path clip-path="url(#clipPath-actual)" fill="#333" d="M72.5,35.5c4.3,0,7.8,1.4,10.7,4.3c2.8,2.8,4.3,6.5,4.5,10.9V81c-0.2,4.3-1.7,7.8-4.5,10.7S76.8,96,72.5,96s-7.8-1.4-10.7-4.3c-2.8-2.8-4.3-6.4-4.5-10.7V50.7c0.2-4.4,1.7-8.1,4.5-10.9C64.7,36.9,68.2,35.5,72.5,35.5L72.5,35.5L72.5,35.5z M108,81c-0.2,8.9-3.1,16.5-8.7,22.9c-5.6,6.3-12.9,10.3-21.8,11.9V151h-10v-35.3c-8.9-1.6-16.2-5.5-21.8-11.9c-5.6-6.3-8.5-14-8.7-22.9h10c0.2,7,2.7,12.9,7.5,17.6s10.8,7.1,18,7.3c7.1-0.2,13.1-2.6,18-7.3c4.8-4.7,7.3-10.6,7.5-17.6L108,81L108,81z"/>
+  <path clip-path="url(#clipPath-actual)" fill="#333" d="M104.5,40.5L89.9,25.9l7.1-7.1l7.5,7.5l18.9-18.9l7.1,7.1L104.5,40.5z"/>
 </svg>
