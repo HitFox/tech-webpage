@@ -34,44 +34,68 @@ h2 > a {
   }
 }
 
-.link--has-image {
-  background-image: none;
-  background-image: url('../assets/svg/hftd-logo.svg');
-  color: $color-black;
-  padding-left: 60px;
-  padding-top: 8px;
-  padding-bottom: 10px;
-  background-position: -74px 0;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  font-weight: 400;
+.global-header {
+  margin-top: 1.5 * $project-base-measure;
+  margin-bottom: 2 * $project-base-measure;
+  border-bottom: 1px solid $color-silver;
+  clear: both;
+  overflow: hidden;
 
   @include mq(smallish) {
-    padding-left: 70px;
-    background-position: -85px 0;
-  }
-
-  @include mq(mediumish) {
-    background-position: -94px 0;
-  }
-  
-  &:hover {
-    background-image: url('../assets/svg/hftd-logo.svg');
+    padding-left: 23px;
+    padding-right: 23px;
+    border-bottom: 0;
+    margin-bottom: 4 * $project-base-measure;
+    margin-top: 2 * $project-base-measure;
   }
 }
 
-.global-header {
-  margin-bottom: 2 * $project-base-measure;
-  margin-top: 2 * $project-base-measure;
-  padding-top: $project-base-measure;
-  padding-left: 23px;
-  padding-right: 23px;
+.anchor-home {
+  width: 180px;
+  margin: 0 auto $project-base-measure auto;
+  display: block;
 
   @include mq(smallish) {
-    margin-bottom: 4 * $project-base-measure;
+    float: left;
+    margin-bottom: .45rem;
+  }
+}
+
+.image-home { display: block; }
+
+.menu-filter {
+  @include mq(smallish) {
+    float: right;
+    margin-top: 4px;
   }
 
-  @include mq(mediumish) {
-    margin-bottom: 8 * $project-base-measure;
-  }
+  @include mq(mediumish) { margin-top: 0; }
+ }
+
+.menu-filter__list {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.menu-filter__el {
+  margin-left: 1rem;
+  &::before { content: none; }
+
+  &:first-child { margin-left: 0; }
+}
+
+.menu-filter__a {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid transparent;
+  color: $color-silver;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.menu-filter__a--is-active,
+.menu-filter__a:hover {
+  border-bottom: 2px solid $color-orange;
+  color: $color-black;
 }

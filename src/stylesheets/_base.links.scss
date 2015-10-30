@@ -26,3 +26,8 @@ a {
 
   &:hover { color: $color-brand; }
 }
+
+.anchor--wo-underline { background-image: none;
+
+  &:hover { background-image: inherit; }
+}
