@@ -14,3 +14,4 @@ public/stylesheets
 public/javascripts
 public/rev-manifest.json
 public/*.html
+public/**/*.html
