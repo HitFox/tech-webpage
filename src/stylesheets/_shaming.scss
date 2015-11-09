@@ -35,7 +35,7 @@ h2 > a {
 }
 
 .global-header {
-  margin-top: 1.5 * $project-base-measure;
+  padding-top: 1.5 * $project-base-measure;
   margin-bottom: 2 * $project-base-measure;
   border-bottom: 1px solid $color-silver;
   clear: both;
@@ -46,7 +46,7 @@ h2 > a {
     padding-right: 23px;
     border-bottom: 0;
     margin-bottom: 4 * $project-base-measure;
-    margin-top: 2 * $project-base-measure;
+    padding-top: 2 * $project-base-measure;
   }
 }
 
@@ -98,4 +98,25 @@ h2 > a {
 .menu-filter__a:hover {
   border-bottom: 2px solid $color-orange;
   color: $color-black;
+}
+
+
+.global-header--detail {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 0;
+}
+
+.global-header--detail .menu-filter__a {
+  color: $color-white;
+}
+
+
+.global-header--detail .anchor--w-icon {
+  padding-right: 40px;
+  background-image: url('../assets/svg/menu.svg');
+  background-position: right 0;
+  background-size: 32px;
+  background-repeat: no-repeat;
 }
