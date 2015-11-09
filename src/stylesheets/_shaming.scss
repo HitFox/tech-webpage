@@ -110,13 +110,30 @@ h2 > a {
 
 .global-header--detail .menu-filter__a {
   color: $color-white;
+
+  &:hover {
+    border-bottom: 0;
+    opacity: .8;
+  }
 }
 
+.global-header--detail .menu-filter__icon {
+  fill: $color-white;
+  width: 32px;
+  margin-bottom: -11px;
+  margin-left: 10px;
+  display: inline-block;
 
-.global-header--detail .anchor--w-icon {
-  padding-right: 40px;
-  background-image: url('../assets/svg/menu.svg');
-  background-position: right 0;
-  background-size: 32px;
-  background-repeat: no-repeat;
+  @include mq(mediumish) {
+    margin-bottom: -13px;
+    width: 40px;
+  }
+}
+
+.icon-home path {
+  fill: $color-white;
+}
+
+.icon-home path:last-of-type{
+  fill: $color-black;
 }

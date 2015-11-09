@@ -66,6 +66,7 @@ figure img {
 }
 
 .link-icon {
+  background-repeat: no-repeat;
   background-size: contain;
   display: none;
   height: 1.5 * $project-base-measure;
@@ -86,7 +87,8 @@ figure img {
 
 .icon-facebook {
   background-image: url('/assets/svg/facebook.svg');
-  background-position: 0 -3px;
+  background-position: 50% 0;
+  background-size: 50%;
 
   &:hover { background-image: url('/assets/svg/facebook.svg'); }
 }
