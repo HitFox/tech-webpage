@@ -5,16 +5,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var imageHeight = imageClass.clientHeight;
   var documentHeader = document.getElementsByTagName('header')[0];
   var documentHeaderHeight = documentHeader.clientHeight;
-  var blub = imageHeight - documentHeaderHeight;
+  var documentHeaderDifference = imageHeight - documentHeaderHeight;
+
+  console.log(imageHeight);
+  console.log(documentHeaderDifference);
 
   container.onscroll = function () {
     var y = window.scrollY;
-    console.log(y)
-    if(y > blub) {
+    if(y > documentHeaderDifference) {
       documentHeader.classList.add('is-scrolled');
     } else {
       documentHeader.classList.remove('is-scrolled');
     }
   };
-
 });
