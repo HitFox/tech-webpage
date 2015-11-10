@@ -35,7 +35,7 @@ h2 > a {
 }
 
 .global-header {
-  padding-top: 1.5 * $project-base-measure;
+  margin-top: 1.5 * $project-base-measure;
   margin-bottom: 2 * $project-base-measure;
   border-bottom: 1px solid $color-silver;
   clear: both;
@@ -44,9 +44,12 @@ h2 > a {
   @include mq(smallish) {
     padding-left: 23px;
     padding-right: 23px;
-    border-bottom: 0;
     margin-bottom: 4 * $project-base-measure;
-    padding-top: 2 * $project-base-measure;
+    margin-top: 2 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    border-bottom: 0;
   }
 }
 
@@ -55,7 +58,7 @@ h2 > a {
   margin: 0 auto $project-base-measure auto;
   display: block;
 
-  @include mq(smallish) {
+  @include mq(mediumish) {
     float: left;
     margin-bottom: .45rem;
   }
@@ -64,7 +67,7 @@ h2 > a {
 .image-home { display: block; }
 
 .menu-filter {
-  @include mq(smallish) {
+  @include mq(mediumish) {
     float: right;
     margin-top: 4px;
   }
@@ -134,6 +137,45 @@ h2 > a {
   fill: $color-white;
 }
 
-.icon-home path:last-of-type{
+.icon-home path:last-of-type {
   fill: $color-black;
+}
+
+.global-header--detail.is-scrolled .menu-filter__a {
+  color: $color-black;
+}
+
+.global-header--detail.is-scrolled .menu-filter__icon path,
+.global-header--detail.is-scrolled .icon-home path {
+  fill: $color-black;
+}
+
+.global-header--detail .anchor-home {
+  margin-left: 23px;
+  float: left;
+  margin-bottom: 0;
+}
+
+.global-header--detail .menu-filter {
+  float: right;
+  margin-right: 23px;
+}
+
+.global-header--detail .menu-filter__a {
+  margin-top: 4px;
+}
+
+.global-header--detail .menu-filter__a > span {
+  display: none;
+}
+
+.icon-arrow-back {
+  display: none;
+
+  @include mq(smallish) {
+    display: inline-block;
+    width: 30px;
+    padding-left: 10px;
+    margin-bottom: -3px;
+  }
 }
