@@ -167,6 +167,10 @@ h2 > a {
 
 .global-header--detail .menu-filter__a > span {
   display: none;
+
+  @include mq(smallish) {
+    display: inline;
+  }
 }
 
 .icon-arrow-back {
@@ -178,4 +182,8 @@ h2 > a {
     padding-left: 10px;
     margin-bottom: -3px;
   }
+}
+
+.menu-filter__el:last-child .menu-filter__a:hover .icon-arrow-back path {
+  fill: $color-orange;
 }
