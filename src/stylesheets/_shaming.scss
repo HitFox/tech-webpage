@@ -137,3 +137,7 @@ h2 > a {
 .icon-home path:last-of-type{
   fill: $color-black;
 }
+
+.global-header--detail.is-scrolled .menu-filter__a {
+  color: $color-black;
+}
