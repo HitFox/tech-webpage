@@ -44,9 +44,12 @@ h2 > a {
   @include mq(smallish) {
     padding-left: 23px;
     padding-right: 23px;
-    border-bottom: 0;
     margin-bottom: 4 * $project-base-measure;
     margin-top: 2 * $project-base-measure;
+  }
+
+  @include mq(mediumish) {
+    border-bottom: 0;
   }
 }
 
@@ -55,7 +58,7 @@ h2 > a {
   margin: 0 auto $project-base-measure auto;
   display: block;
 
-  @include mq(smallish) {
+  @include mq(mediumish) {
     float: left;
     margin-bottom: .45rem;
   }
@@ -64,7 +67,7 @@ h2 > a {
 .image-home { display: block; }
 
 .menu-filter {
-  @include mq(smallish) {
+  @include mq(mediumish) {
     float: right;
     margin-top: 4px;
   }
@@ -98,4 +101,89 @@ h2 > a {
 .menu-filter__a:hover {
   border-bottom: 2px solid $color-orange;
   color: $color-black;
+}
+
+
+.global-header--detail {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 0;
+}
+
+.global-header--detail .menu-filter__a {
+  color: $color-white;
+
+  &:hover {
+    border-bottom: 0;
+    opacity: .8;
+  }
+}
+
+.global-header--detail .menu-filter__icon {
+  fill: $color-white;
+  width: 32px;
+  margin-bottom: -11px;
+  margin-left: 10px;
+  display: inline-block;
+
+  @include mq(mediumish) {
+    margin-bottom: -13px;
+    width: 40px;
+  }
+}
+
+.icon-home path {
+  fill: $color-white;
+}
+
+.icon-home path:last-of-type {
+  fill: $color-black;
+}
+
+.global-header--detail.is-scrolled .menu-filter__a {
+  color: $color-black;
+}
+
+.global-header--detail.is-scrolled .menu-filter__icon path,
+.global-header--detail.is-scrolled .icon-home path {
+  fill: $color-black;
+}
+
+.global-header--detail .anchor-home {
+  margin-left: 23px;
+  float: left;
+  margin-bottom: 0;
+}
+
+.global-header--detail .menu-filter {
+  float: right;
+  margin-right: 23px;
+}
+
+.global-header--detail .menu-filter__a {
+  margin-top: 4px;
+}
+
+.global-header--detail .menu-filter__a > span {
+  display: none;
+
+  @include mq(smallish) {
+    display: inline;
+  }
+}
+
+.icon-arrow-back {
+  display: none;
+
+  @include mq(smallish) {
+    display: inline-block;
+    width: 30px;
+    padding-left: 10px;
+    margin-bottom: -3px;
+  }
+}
+
+.menu-filter__el:last-child .menu-filter__a:hover .icon-arrow-back path {
+  fill: $color-orange;
 }
