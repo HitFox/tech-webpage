@@ -1,0 +1,145 @@
+extends _layout
+
+block content
+  .techdev-logo
+
+  //- .section-heads
+  //-   .section-text.section-text--center
+  //-     .section-text__heading.section-text__heading--left
+  //-       we are
+  //-     .section-text__body
+  //-       a team of developers, designers and product managers with the goal to assist young ventures in their early stages with expertise and manpower. 
+  //-   .head-bubbles
+  //-     -
+  //-       bubbles = [
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-         {name: 'jan'},
+  //-       ]
+  //-     mixin bubble(person)
+  //-       if person
+  //-         svg(width="140" height="140").head-bubble
+  //-           defs
+  //-             pattern(id="bg" x="0" y="0" width="1" height="1")
+  //-               image(xlink:href="/assets/"+person.name+".jpeg" width="150" height="150")
+  //-           path(
+  //-             fill="url(#bg)"
+  //-             d="M67.6034121,0.791472949 C69.6610913,-0.0126446165 72.979831,0.0417343038 75.0123606,0.911364038 L115.599276,18.276714 C117.633446,19.1470456 119.986541,21.4965185 120.853498,23.5207596 L138.165468,63.9421644 C139.033124,65.9680392 139.08003,69.2764648 138.269626,71.3332886 L121.472904,113.963724 C120.662773,116.019855 118.386465,118.454823 116.387124,119.403091 L74.9480782,139.057236 C72.9494103,140.005185 69.6761031,140.098044 67.6183932,139.257062 L23.1527426,121.084031 C21.1033372,120.246443 18.787726,117.904023 17.9755224,115.838976 L1.07512066,72.8693043 C0.265226288,70.8101287 0.280856743,67.4881348 1.11890011,65.4276198 L18.3011418,23.181277 C19.1352149,21.1305237 21.4816061,18.8153484 23.5371225,18.0120761 L67.6034121,0.791472949 Z")
+  //-       else
+  //-         .head-bubble
+
+  //-     for person in bubbles
+  //-       +bubble(person)
+  //-   style.
+  //-     .head-bubbles {
+  //-       height: 800px;
+  //-       position: relative;
+  //-     }
+  //-     .head-bubble {
+  //-       position: absolute;
+  //-       transition: transform .3s ease-out;
+  //-     }
+
+
+  section.grid.bgc--is-black.c--is-white
+    .grid__item
+      h1 Interim technical Management
+      p Every venture starts with a brilliant business idea. But to take the business to market, you need to turn the idea into software. While you are still looking for a technical cofounder and CTO, the TechDev team can act as an interim CTO and help you develop a tech strategy to get you off the ground.
+    .grid__item
+
+  section.grid.bgc--is-turquoise.c--is-white
+    .grid__item
+      h1 Technical consulting and implementation
+      p Developers are in high demand and hiring good talent to build such a team takes time. We are an integrated team with members who work together effectively. With years of experience in different fields of technology, we can help you make the right decisions, and get started before you have assembled a team of your own.
+    .grid__item
+
+  section.grid.bgc--is-yellow.c--is-white
+    .grid__item
+      h1 Product Management
+      p Based on your domain knowledge we help you find answers to the most important questions: Who are your users, what problem are your trying to solve for them? With these answers as a foundation we support you to shape a clear vision for your product and definine a realization strategy by setting achievable goals.
+    .grid__item
+
+  section.grid.bgc--is-blue.c--is-white
+    .grid__item
+      h1 Design
+      p Our designers work closely together with your business team, product management and developers to ensure we deliver great results that can be quickly implemented and meet your high expectations. We collaborate closely with you in design workshops to achieve great results in line with your product vision.
+    .grid__item
+
+  section.grid
+    .grid__item
+      h1 Ventures we supported
+      p Our designers work closely together with your business team, product management and developers to ensure we deliver great results that can be quickly implemented and meet your high expectations. We collaborate closely with you in design workshops to achieve great results in line with your product vision.
+    .venture-container
+      .venture-nav.venture-nav--left
+        <-
+      .venture
+        .venture__image
+        .venture__logo
+          CLARK
+        .venture__text
+          Clark analysiert Deine Verträge laufend auf Sparpotenzial - und finden günstigere oder bessere Alternativen. Mit Clark verwaltest Du Versicherungen einfach und übersichtlich online! 
+          .venture-button.venture-button--primary
+            Case Study
+          .venture-button
+            Open positions
+
+  .section-benefit.bgc--is-lightblue
+    .section-text.section-text--center
+      .section-text__heading
+        How they benefit from working with us
+      .section-text__body
+         p We are offering advantages that an external agency can’t match. Through our integration in the HitFox/Finleap family you can benefit from the experience we gathered working with other ventures in your situation. We have direct access to other founders and Finleap management, sitting in the sames office, allowing us to work faster and more efficient. We can identify and use synergies between ventures and keep costs low using practices and stacks that are proven in this environment.
+         p We can provide very early feedback, helping you validate your ideas for basically zero overhead. Just come by or leave a message…  
+    .contact-heads
+      .contact-heads__icon.contact-head__icon--disabled
+        Dominic
+      .contact-heads__icon
+        Peter
+      .contact-heads__text
+        Peter Grosskopf
+      .contact-heads__text.text--light
+        – CDO Hitfox
+    .contact-form-bubble.contact-form-bubble--arrow2
+      //cssarrowplease
+      textarea.contact-form-text
+      input(type="text").contact-form-email
+      input(type="submit").contact-form-button
+
+  .section-hiring
+    .hiring-headline
+      By the way, are you a …
+    .hiring-head
+      .hiring-head__icon
+      .hiring-head__text
+    .section-text
+      .section-text__body.text--light
+        Looking for new oppertunities and interested in getting to know us?  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore aliquyam erat you should definetily 
+        a
+          .contact-heads__icon
+            //Peter
+          write Peter
+
+
+        
+
+
