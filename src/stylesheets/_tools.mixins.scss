@@ -5,13 +5,13 @@
     @if $fs-breakpoint == null {
       @include make-font-size($fs-font-size);
     } @else {
-        @if map-has-key($fs-breakpoints, $fs-breakpoint) {
-          $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
-        }
-        @media screen and (min-width: $fs-breakpoint) {
-          @include make-font-size($fs-font-size);
-        }
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
       }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
   }
 }
 
@@ -22,8 +22,8 @@
       line-height: nth($fs-font-size, 2);
     }
   } @else {
-      font-size: $fs-font-size;
-    }
+    font-size: $fs-font-size;
+  }
 }
 
 @mixin mq($mq-breakpoint, $mq-breakpoints: $mybreakpoints) {
