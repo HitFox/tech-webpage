@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 
 app.use(express.static(pub));
-app.post('/contact', messageServer);
+//app.post('/contact', messageServer);
 
 app.get('/', function(req, res, next) {
   var file = getFile('index');
@@ -31,8 +31,8 @@ app.get('/', function(req, res, next) {
   }
 });
 
-app.get('/:page', function(req, res, next) {
-  var file = getFile(req.params.page);
+app.get('*', function(req, res, next) {
+  var file = getFile(req.path);
   if(file) {
     res.sendFile(file);
   } else {
