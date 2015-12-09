@@ -1,0 +1,447 @@
+extends ../_layout--detail
+block content
+  article.article
+    div.img--is-in-background
+      img(class="img--is-in-background__img" src="/assets/images/welcome.jpg")
+      div.img--is-in-background__content
+        h1 First steps with natural language processing
+        //-span.heading-sub My top five moments
+    header.article__header
+      img(class="img--is-rounded" src="/assets/images/luki.jpg")
+      p.meta
+        a(class="link--has-no-underline" href="" rel="author") Lukas
+        |  wrote this 
+        time(datetime="2015-11-28") one day ago
+      a(class="link-icon icon-twitter" href="https://twitter.com/agento")
+    hr
+    h2 What is it good For
+    p.
+      Natural language is the human way to communicate in a formal way. With
+      natural language we give commands, write down thoughs, poesie and a lot more.
+      These days computers are not so good in understanding natural language,
+      they communicate in so called "formal-languages" which are very precise,
+      have strict rules, and most important no exceptions.
+    p.
+      When it would be possible for computers to understand natural language,
+      it would also be possible for humans to communicate with computers in
+      a more "natural" way.
+      In addition computers could perfom tasks, which at the moment
+      are just not possible. Some of them are:
+    ul
+      li Understanding feelings and sentiments
+      li Understanding the context in text
+      li Find similarity of documents
+      li Extracting important information out of text
+      li Use the above tasks, to automate tedious jobs just humans can do these days
+    p.
+      In this blogpost I try to explain how to index documents written in
+      natural language so that they can be searched and/or compaired. It is a 
+      hands on tutorial. Feel free to copy the code and run it in the development mode!
+      For readerfriendlyness, the used functions are written below their use. So
+      just keep in mind, when a 'Method not found' error shows up. The code
+      very simplified and so very slow even indexin medium large corpuses!
+    
+    h2 Bag of words
+    p.
+      Elementary for machine-learning and natural language processing is, that
+      the input format for a mathematical algorithm has to be numbers. The inputs
+      are also called <b>features</b>. It has to be found a method to transform
+      textual information into a mathematical representation. 
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "New York is a nice city":
+          var doc2 = "I have a very nice evening learning nlp";
+          var vector = get_features(doc2)        // where the magic happens
+          var vector == [0, 0, 0, 0.3, 0.3, 0,3] // in this case tf-idf
+
+          // just a dummy feature function
+          var get_features = function(doc) { 
+            return [0, 0, 0, 0.3, 0.3, 0,3]; 
+          }
+    p.
+      The most basic way doing this is the bag-of-words model. In this model we 
+      are building an index (list) of all unique words from all documents. This 
+      index defines the dimension of the document vectors. All document vectors 
+      share this dimensions, so the mapping of the words is made by it's place 
+      in the index.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "New York is very nice and very beautiful";
+          var doc2 = "I have a very nice evening learning nlp";
+          index = make_index([doc1, doc2]);
+          index => ["New", "York", "is", "very", "nice", "and", "bautiful",
+                   "I", "have", "a", "evening", "learning", "nlp"];
+
+          // Goes through all the documents, extracts their unique words
+          // into an index and returns it.
+          var make_index = function(docs) {
+            var index = [];
+            for (var i = 0; i < docs.length; i++) {
+              var doc = docs[i].split(' ');
+              for (var j = 0; j < doc.length; j++ ) {
+                if (index.indexOf(doc[j]) < 0) {
+                  index.push(doc[j]);
+                }
+              }
+            }
+            return index;
+          };
+    p.
+      To generate a document vector for a document, we have to calculate
+      how often a word occures in the document, the term-frequency (tf). 
+      The document vector of doc1 has the same length than the index 
+      vector, <b>NOT</b> like the document has words in it.
+      Every term in the index is represented through the place in the 
+      vector. The number at it's place represents how often the term 
+      occurs in the document.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "New York is very nice and very beautiful";
+          // In the 4th place stands a 2 because the corresponding term 
+          // 'very' occurs two times in doc1. The terms which are not
+          // in the document have a zero in it's place.
+          var vec1 = get_feature_vector(doc1, index);
+          vec1 == [1, 1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+          vec1.length == index.length
+          vec1.length != doc1.length
+          
+          // Counts the term-frequency of a term in a document and
+          // builds a feature vector with the same length than the index.
+          // ATTENTION not fast and also not generalized, works fine for
+          // space separated wordlists.
+          var get_feature_vector = function(doc, index) {
+            docvec = [];
+            for (var i = 0; i < index.length; i++) {
+              var words = ' ' + index[i] + ' ';
+              var startwords = '^' + index[i] + ' ';
+              var endwords = ' ' + index[i] + '$'
+              var all_words = words + '|' + startwords + '|' + endwords;
+              var regex_count = new RegExp(all_words, 'g');
+              var count = (doc.match(regex_count) || []).length;
+              docvec.push(count);
+            }
+            return docvec;
+          };
+    p.
+      As this representation just memorizes which words occurs how often
+      in the document, the information of the order is getting lost!
+      That is the reason why it is call the bag-of-words model.
+
+    h2 The vector space model
+    p.
+      As the documets can now be transformed into a vectors, all the
+      document-vectors together are building a so called vector-space.
+    p. 
+      The bag-of-words model is just one way of transfering text to vectors. 
+      In the bag-of-words model the dimensions are directly mapped to the words,
+      there could be different models where the dimensions are mapped to
+      feelings, meaning and many other abstract things.
+    p.  
+      In the vector-space model, the document-vectors are commonly compaired 
+      with the cosinus distance, which represents the angle between the document-vectors. 
+      The aim of natural language processing is, to find methods, how to 
+      transform natual language and it's transporting meaning and context into 
+      the vector-space, without loosing to much of information. In the
+      example it is proven that when using the bag-of-words model, the
+      position of the words in a document is irrelevant. In other words, gramatical
+      structures are lost!
+
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "New York is very nice and very beautiful";
+          var doc1b = "York New and is very beautiful nice very"
+          var doc2 = "I have a very nice evening learning nlp";
+          var doc2b = "evening very I have learning a nice nlp";
+
+          var docvec1 = get_feature_vector(doc1, index);
+          var docvec1b = get_feature_vector(doc1b, index);
+          var docvec2 = get_feature_vector(doc2, index);
+          var docvec2b = get_feature_vector(doc2b, index);
+
+          var sim = cosinus_similarity(docvec1, docvec2);
+          var simb = cosinus_similarity(docvec1b, docvec2b);
+          sim == simb == 2.6832815729997477
+
+          // Calculates and returns the dot product of two vectors
+          function dotproduct(a, b) {
+            var n = 0, lim = Math.min(a.length, b.length);
+            for (var i = 0; i < lim; i++) { 
+              n += a[i] * b[i];
+            }
+            return n;
+          }
+
+          // Calculates and returns the length a vector
+          function vector_length(a) {
+            var sumsqr = 0; 
+            for (var i = 0; i < a.length; i++) { 
+              sumsqr += a[i] * a[i]; 
+            }
+            return Math.sqrt(sumsqr);
+          }
+
+          // Calculates and returns the cosinus similarity of two
+          // vectors. It is also known as the angle between two
+          // vectors.
+          function cosinus_similarity(a, b) {
+            var lenght_a = vector_length(a);
+            var length_b = vector_length(b);
+            return dotproduct(a, b) / (lenght_a / length_b);
+          }
+
+
+    h2 Term-Frequency Inverse-Document-Frequency (TF-IDF)
+    p.
+      The tf-idf method, is the most popular way to bring textual
+      information into the vector space model. It extends the basic
+      bag-of-words model and its term-frequency (tf) with the a global
+      weigth called the the inverse-document-frequency (idf).
+    p.
+      Whereaes the term-frequency (tf) defines that a term is more important 
+      the often it occurs in a document, the inverse-document-frequeny (idf)
+      adds a weigth which reduces the importance of a term when it occurs
+      in too many documents. This bases of the theory that a word which is 
+      used very often, might be a general word and therefore has a general
+      and ambiguous meaning. So it is not very informative in the bag-of-words 
+      model which loses it's local context.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "New York is very nice and very beautiful";
+          var doc2 = "I have a very nice evening learning nlp";
+          var tf_bow = get_feature_vector(doc1, index);
+          tf_bow == [ 1, 1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0];
+          // Math.log(2/2) = 0: Math.log(2/1) = 0.69
+          // manual calculation...
+          // tf_idf_bow = [1*idf(2/1), 1*idf(2/1), 1*idf(2/1), 
+          //              2*idf(2/2), 1*idf(2/2), 1*idf(2/1), 
+          //              1*idf(2/1), 0*idf(2/1), 0*idf(2/1), 
+          //              0*idf(2/1), 0*idf(2/1), 0*idf(2/1), 
+          //              0*idf(2/1)]; 
+          tf_idf_bow = [1*0.69, 1*0.69, 1*0.69, 2*0, 1*0, 1*0.69, 1*0.69, 
+                        0*0.69, 0*0.69, 0*0.69, 0*0.69, 0*0.69, 0*0.69]; 
+          tf_idf_bow = [0.69, 0.69, 0.69, 0, 0, 0.69, 0.69, 0, 
+                        0, 0, 0, 0, 0]; 
+          tf_idf_bow == get_tfidf_feature_vector(doc1, index, [doc1, doc2]);
+    p.
+      As <b>very</b> and <b>nice</b> are appearing in two (so in all) documents, 
+      their inverse-document-frequency is zero. This means they are to general to be important.
+
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          // Calculates the inverse-document-frequence given the
+          // number of all documents and the number of all documents
+          // the term occurs in.
+          var get_idf = function(n_docs, n_docs_with_term) {
+            return Math.log(n_docs / n_docs_with_term);
+          }
+
+          // Calculates the document-frequence given the term
+          // and all the documents.
+          var get_df = function(term, docs) {
+            var count = 0;
+            for (var i = 0; i < docs.length; i++) {
+              var doc = docs[i];
+              if (get_tf(term, doc) > 0) {
+                count++;
+              }
+            }
+            return count;
+          }
+
+          // Calculates the term-frequence given the term
+          // and the document to check
+          var get_tf = function(term, doc) {
+            var words = ' ' + term + ' ';
+            var startwords = '^' + term + ' ';
+            var endwords = ' ' + term + '$'
+            var all_words = words + '|' + startwords + '|' + endwords;
+            var regex_count = new RegExp(all_words, 'g');
+            return (doc.match(regex_count) || []).length;
+          }
+
+          // Calculates the tf-idf feature vector of a document 
+          // given the document, the index and all other documents.
+          var get_tfidf_feature_vector = function(doc, index, docs) {
+            docvec = [];
+            for (var i = 0; i < index.length; i++) {
+              var tf = get_tf(index[i], doc);
+              var df = get_df(index[i], docs);
+              var idf = get_idf(docs.length, df);
+              var tf_idf = tf * idf;
+              docvec.push(tf_idf);
+            }
+            return docvec;
+          };
+      
+    
+    h2 N-gram model (shingles)
+    p.
+      To bring some context to the bag-of-words (bow), the n-gram model come to play.
+      It stands for a contiguous sequence of n items from a given sequence. When this
+      sequence are whole words, they are also called <i>shingles</i>.
+      The trick of the n-gram model is, that it 
+      <b>generates new terms by combining a serie of neighbour terms with each other.</b>
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          // Generating context by concatinating and combining 
+          // neighbour terms
+          1_gram = "new york is a nice city"
+          
+          2_gram = "new_york york_is is_a a_nice nice_city"
+
+          3_gram = "new_york_is york_is_a is_a_nice a_nice_city"
+
+          123_gram = "new york is a nice city new_york york_is 
+                      is_a a_nice nice_city new_york_is york_is_a 
+                      is_a_nice a_nice_city"
+    p.
+      The new generated terms are saving some context. 
+      For example the terms <b>new_york</b> and <b>nice_city</b>. 
+      new_york might show up more often than york_is. Also nice_city
+      has a new level of sentimental information with it.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          // Returns a array of new n-grams
+          var get_n_gram = function(terms, n) {
+              var t = terms.slice(0); // deep-copy
+              var grams = [];
+              for (var i=0; i < t.length-n+1; i++) {
+                grams.push(t.slice(i, i+n).join('_'));
+              }
+              return grams;
+          }
+          
+          // Returns an extended document with n-grams up to
+          // a given n.
+          var extend_grams = function(doc, up_to_n) {
+            var terms = doc.split(' ');
+            var extended = [];
+            for (var i = 1; i <= up_to_n; i++) {
+              var grams = get_n_gram(terms, i);
+              for (var j = 0; j < grams.length; j++) {
+                extended.push(grams[j]);
+              }
+            }
+            return extended.join(' ');
+          }
+
+
+    h2 Stopwords / Stemming
+    p.
+      In the example above, we figured out, that words with a high term-frequency 
+      and a high document-frequency are not meaningfull, as they are to general.
+      These words are also called <b>stopwords</b>. To improve the
+      algorithm and also speed, we can kick out stopwords before calculating
+      the tf-idf index and n-gram extension. 
+      In the english language, stopwords are (a, the, ..),
+      in german (der, die das, und, ...). A good stopword dictionary is shipped 
+      with the nltk python package and can be downloaded  
+      <a href="www.nltk.org/nltk_data/" target='_blank'>here</a>
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = "new york is a nice city";
+          var clean1  = "new york nice city";
+          var doc2 = "I have a very nice evening learning nlp";
+          // according the enghish stopword dictionary I, have, a and very
+          // are stopwords.
+          var clean2 = "nice evening learning nlp";
+          
+    p.
+      As tf-idf follows the bag-of-words and so ignores gramatical structures,
+      it makes sense to group terms with the same meaning together. That means
+      all the words in different gramatical tenses should be reduced to their
+      basic form. In german it's called "Grundformreduktion" in english
+      <b>stemming</b>.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          document = "basel is a nicer city than new york"
+          cleand   = "basel nicer city new york"
+          stemmed  = "basel nice city new york"
+    p.
+      As you can see, the meaning is similar BUT as soon as you have to
+      interpret, the <b>meaning can change</b>. So, when using smarter algorithms 
+      which are able to make sense of sentiment and gramatical structures, 
+      stopwords should not be kicked out and stemming might also be overthought. 
+      An example are Recurrent Neural Networks and also Google's word2vec
+      method.
+
+    h2 Bring it all together
+    p.
+      With the above methods we can now index some documents and compair their
+      similarity. It es even possible to search for a document by adding a
+      search phrase, which is nothing else than a document.
+    pre.line-numbers.el--is-oversized
+      code.language-javascript
+        :code
+          var doc1 = 'My little brother is a genious, he just figured ' +
+                     'out how to build the hoverboard!';
+          var doc2 = 'There is the rumor that the father of my half ' +
+                     'brother is a famous actor.';
+          var doc3 = 'Math was his beloved subject until he had a very ' +
+                     'bad teacher.';
+          var doc4 = 'When my father was young, there were different ' +
+                     'times. Even the internet was not invented jet!';
+          var corpus = [doc1, doc2, doc3, doc4];
+
+          corpus = preprocess_corpus(corpus, 3);
+          var index = make_index(corpus);
+          var query = 'father brother';
+          console.log('searchresult', most_similar(query, index, corpus));
+
+          // Goes through all documents in the corpus, deletes specialchars,
+          // and adds n-grams. Stopwordremoval and stemming is not implemented
+          // jet.
+          var preprocess_corpus = function(corpus, to_n_gram) {
+            cleaned = [];
+            for (var i=0; i < corpus.length; i++) {
+              var doc = corpus[i].replace(/[^\w\s]/gi, '') // clean specialchars
+              // to be implemented
+              // doc = remove_stopwords(doc, stoppword_dict);
+              // doc = stemming(doc);
+              doc = extend_grams(doc, to_n_gram);
+              cleaned.push(doc);
+            }
+            return cleaned;
+          }
+
+          // Goes through all documents in the corpus and compairs them
+          // with the cosinus_similarity to the query (document). Returns
+          // the most similar document in the corpus.
+          var most_similar = function(query, index, corpus) {
+            var qv = get_tfidf_feature_vector(query, index, corpus);
+            var most_similar = 0.;
+            var most_similar_doc = '';
+            for (var i=0; i < corpus.length; i++) {
+              var dv = get_tfidf_feature_vector(corpus[i], index, corpus);
+              var sim = cosinus_similarity(qv, dv);
+              if (sim > most_similar) {
+                most_similar = sim;
+                most_similar_doc = corpus[i];
+              }
+            }
+            return most_similar_doc;
+          }
+    h2 Do even more things
+    p.
+      Instead of compairing or searching the documents, we could
+      use the tf-idf features to classify documents. For this we can
+      use a machine-learning model like logistic regression classifier
+      and also the documents to train with, must have an extra label (class). 
+      A good way learning more is doing the kaggle competition 
+      <a href='https://www.kaggle.com/c/word2vec-nlp-tutorial' target='_blank'>Bag of Words Meets Bags of Popcorn</a>. It's in Python, a language to learn when doing data science.
+
+      
+
+
+
+
