@@ -14,15 +14,15 @@ block content
         time.timeago(datetime="2015-11-28") one day ago
       a(class="link-icon icon-twitter" href="https://twitter.com/agento")
     hr
-    h2 What is it good For
+    h2 What is it good for
     p.
       Natural language is the human way to communicate in a formal way. With
-      natural language we give commands, write down thoughs, poesie and a lot more.
-      These days computers are not so good in understanding natural language,
-      they communicate in so called "formal-languages" which are very precise,
-      have strict rules, and most important no exceptions.
+      natural language we give commands, write down thoughs, write poetry and a lot more.
+      These days computers are not so good in understanding natural language.
+      They communicate in so called "formal-languages" which are very precise and
+      have strict rules, with no exceptions.
     p.
-      When it would be possible for computers to understand natural language,
+      If it were possible for computers to understand natural language,
       it would also be possible for humans to communicate with computers in
       a more "natural" way.
       In addition computers could perfom tasks, which at the moment
@@ -30,24 +30,24 @@ block content
     ul
       li Understanding feelings and sentiments
       li Understanding the context in text
-      li Find similarity of documents
+      li Finding similarities between documents
       li Extracting important information out of text
-      li Use the above tasks, to automate tedious jobs just humans can do these days
+      li Using the above tasks, to automate tedious jobs only humans can do these days
     p.
       In this blogpost I try to explain how to index documents written in
-      natural language so that they can be searched, compaired and classified. 
-      It is a hands on tutorial. Feel free to copy the code and run it in the 
-      your browsers development mode! The code is very simplified and slow when 
-      indexing larger document sets (corpuses)! Be aware that I don't reimplement
-      all functions for all snippets. When you run them form top to bottom they
+      natural language so that they can be searched, compared and classified. 
+      This is a hands-on tutorial. Feel free to copy the code and run it in 
+      your browser's development mode! The code is very simplified and slow when 
+      indexing large document sets (corpuses)! Be aware that I don't reimplement
+      all functions for all snippets. When you run them from top to bottom, they
       should work fine. When you pick one in the middle, make sure the dependent
       functions are avaliable.
     
     h2 Bag of words
     p.
-      Elementary for machine-learning and natural language processing is, that
-      the input format for a mathematical algorithm has to be numbers. The inputs
-      are also called <b>features</b>. It has to be found a method to transform
+      Elementary for machine-learning and natural language processing, is that
+      the input format for a mathematical algorithm has to be numberic. The inputs
+      are also called <b>features</b>. It has to find a method to transform
       textual information into a mathematical representation. 
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -66,7 +66,7 @@ block content
       The most basic way doing this is the bag-of-words model. In this model we 
       are building an index (list) of all unique words from all documents. This 
       index defines the dimension of the document vectors. All document vectors 
-      share this dimensions, so the mapping of the words is made by it's place 
+      share these dimensions, so the mapping of the words is made by its place 
       in the index.
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -94,11 +94,11 @@ block content
           };
     p.
       To generate a document vector for a document, we have to calculate
-      how often a word occures in the document, the term-frequency (tf). 
+      how often a word occurs in the document, the term-frequency (tf). 
       The document vector of doc1 has the same length than the index 
       vector, <b>NOT</b> like the document has words in it.
       Every term in the index is represented through the place in the 
-      vector. The number at it's place represents how often the term 
+      vector. The number at its place represents how often the term 
       occurs in the document.
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -134,26 +134,26 @@ block content
           };
     p.
       As this representation just memorizes which words occurs how often
-      in the document, the information of the order is getting lost!
-      That is the reason why it is call the bag-of-words model.
+      in the document, information about the order gets lost!
+      That is why it is called the bag-of-words model.
 
     h2 The vector space model
     p.
-      As the documets can now be transformed into a vectors, all the
+      As the documets can now be transformed into vectors, all the
       document-vectors together are building a so called vector-space.
     p. 
-      The bag-of-words model is just one way of transfering text to vectors. 
-      In the bag-of-words model the dimensions are directly mapped to the words,
+      The bag-of-words model is just one way of transferring text to vectors. 
+      In the bag-of-words model where the dimensions are directly mapped to the words,
       there could be different models where the dimensions are mapped to
       feelings, meaning and many other abstract things.
     p.  
       In the vector-space model, the document-vectors are commonly compaired 
       with the cosinus distance, which represents the angle between the document-vectors. 
       The aim of natural language processing is, to find methods, how to 
-      transform natual language and it's transporting meaning and context into 
-      the vector-space, without loosing to much of information. In the
+      transform natual language and its transporting meaning and context into 
+      the vector-space, without losing to much information. In the
       example it is proven that when using the bag-of-words model, the
-      position of the words in a document is irrelevant. In other words, gramatical
+      position of the words in a document is irrelevant. In other words, grammatical
       structures are lost!
 
     pre.line-numbers.el--is-oversized
@@ -209,12 +209,12 @@ block content
       The tf-idf method, is the most popular way to bring textual
       information into the vector space model. It extends the basic
       bag-of-words model and its term-frequency (tf) with the a global
-      weigth called the the inverse-document-frequency (idf).
+      weigth called the inverse-document-frequency (idf).
     p.
-      Whereaes the term-frequency (tf) defines that a term is more important 
-      the often it occurs in a document, the inverse-document-frequeny (idf)
+      Whereas the term-frequency (tf) defines that a term is more important 
+      how often it occurs in a document, the inverse-document-frequeny (idf)
       adds a weigth which reduces the importance of a term when it occurs
-      in too many documents. This bases of the theory that a word which is 
+      in too many documents. The basis of the theory that a word which is 
       used very often, might be a general word and therefore has a general
       and ambiguous meaning. So it is not very informative in the bag-of-words 
       model which loses it's local context.
@@ -242,7 +242,7 @@ block content
           console.log('tf_idf_bow', tf_idf_bow);
     p.
       As <b>very</b> and <b>nice</b> are appearing in two (so in all) documents, 
-      their inverse-document-frequency is zero. This means they are to general to be important.
+      their inverse-document-frequency is zero. This means they are too general to be important.
 
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -358,13 +358,13 @@ block content
 
     h2 Stopwords / Stemming
     p.
-      In the example above, we figured out, that words with a high term-frequency 
-      and a high document-frequency are not meaningfull, as they are to general.
+      In the example above, we figured out that words with a high term-frequency 
+      and a high document-frequency are not meaningful, as they are too general.
       These words are also called <b>stopwords</b>. To improve the
       algorithm and also speed, we can kick out stopwords before calculating
       the tf-idf index and n-gram extension. 
-      In the english language, stopwords are (a, the, ..),
-      in german (der, die das, und, ...). A good stopword dictionary is shipped 
+      In the English language, stopwords are (a, the, ..),
+      in German (der, die das, und, ...). A good stopword dictionary is shipped 
       with the nltk python package and can be downloaded  
       <a href="www.nltk.org/nltk_data/" target='_blank'>here</a>
     pre.line-numbers.el--is-oversized
@@ -380,8 +380,8 @@ block content
     p.
       As tf-idf follows the bag-of-words and so ignores gramatical structures,
       it makes sense to group terms with the same meaning together. That means
-      all the words in different gramatical tenses should be reduced to their
-      basic form. In german it's called "Grundformreduktion" in english
+      all the words in different grammatical tenses should be reduced to their
+      basic form. In German it's called "Grundformreduktion" in English
       <b>stemming</b>.
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -392,15 +392,15 @@ block content
     p.
       As you can see, the meaning is similar BUT as soon as you have to
       interpret, the <b>meaning can change</b>. So, when using smarter algorithms 
-      which are able to make sense of sentiment and gramatical structures, 
+      which are able to make sense of sentiment and grammatical structures, 
       stopwords should not be kicked out and stemming might also be overthought. 
       An example are Recurrent Neural Networks and also Google's word2vec
       method.
 
     h2 Bring it all together
     p.
-      With the above methods we can now index some documents and compair their
-      similarity. It es even possible to search for a document by adding a
+      With the above methods we can now index some documents and compare their
+      similarity. It is even possible to search for a document by adding a
       search phrase, which is nothing else than a document.
     pre.line-numbers.el--is-oversized
       code.language-javascript
@@ -457,7 +457,7 @@ block content
           }
     h2 Do even more things
     p.
-      Instead of compairing or searching the documents, we could
+      Instead of comparing or searching the documents, we could
       use the tf-idf features to classify documents. For this we can
       use a machine-learning model like logistic regression classifier
       and also the documents to train with, must have an extra label (class). 
