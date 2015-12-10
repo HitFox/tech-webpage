@@ -3,7 +3,7 @@ import timeago from 'timeago';
 
 function initialize() {
   $(function() {
-    $('abbr.timeago').timeago();
+    $('.timeago').timeago();
   });
 }
 
