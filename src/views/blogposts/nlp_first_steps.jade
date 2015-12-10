@@ -35,11 +35,13 @@ block content
       li Use the above tasks, to automate tedious jobs just humans can do these days
     p.
       In this blogpost I try to explain how to index documents written in
-      natural language so that they can be searched and/or compaired. It is a 
-      hands on tutorial. Feel free to copy the code and run it in the development mode!
-      For readerfriendlyness, the used functions are written below their use. So
-      just keep in mind, when a 'Method not found' error shows up. The code
-      very simplified and so very slow even indexin medium large corpuses!
+      natural language so that they can be searched, compaired and classified. 
+      It is a hands on tutorial. Feel free to copy the code and run it in the 
+      your browsers development mode! The code is very simplified and slow when 
+      indexing larger document sets (corpuses)! Be aware that I don't reimplement
+      all functions for all snippets. When you run them form top to bottom they
+      should work fine. When you pick one in the middle, make sure the dependent
+      functions are avaliable.
     
     h2 Bag of words
     p.
@@ -50,13 +52,14 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
-          var doc1 = "New York is a nice city":
+          var doc1 = "New York is a nice city";
           var doc2 = "I have a very nice evening learning nlp";
-          var vector = get_features(doc2)        // where the magic happens
-          var vector == [0, 0, 0, 0.3, 0.3, 0,3] // in this case tf-idf
+          var vector = get_dummy_features(doc2);    // where the magic happens
+          vector == [0, 0, 0, 0.3, 0.3, 0,3]; // in this case just a dummy
+          console.log('vector', vector);
 
           // just a dummy feature function
-          var get_features = function(doc) { 
+          function get_dummy_features(doc) { 
             return [0, 0, 0, 0.3, 0.3, 0,3]; 
           }
     p.
@@ -70,13 +73,14 @@ block content
         :code
           var doc1 = "New York is very nice and very beautiful";
           var doc2 = "I have a very nice evening learning nlp";
-          index = make_index([doc1, doc2]);
-          index => ["New", "York", "is", "very", "nice", "and", "bautiful",
+          var index = make_index([doc1, doc2]);
+          index == ["New", "York", "is", "very", "nice", "and", "bautiful",
                    "I", "have", "a", "evening", "learning", "nlp"];
+          console.log('index', index);
 
           // Goes through all the documents, extracts their unique words
           // into an index and returns it.
-          var make_index = function(docs) {
+          function make_index(docs) {
             var index = [];
             for (var i = 0; i < docs.length; i++) {
               var doc = docs[i].split(' ');
@@ -105,14 +109,17 @@ block content
           // in the document have a zero in it's place.
           var vec1 = get_feature_vector(doc1, index);
           vec1 == [1, 1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0]
-          vec1.length == index.length
-          vec1.length != doc1.length
-          
+          console.log('vec1.length == index.length', 
+                       vec1.length == index.length);
+          console.log('vec1.length != doc1.length',
+                       vec1.length != doc1.length);
+          console.log('vec1', vec1);
+
           // Counts the term-frequency of a term in a document and
           // builds a feature vector with the same length than the index.
           // ATTENTION not fast and also not generalized, works fine for
           // space separated wordlists.
-          var get_feature_vector = function(doc, index) {
+          function get_feature_vector(doc, index) {
             docvec = [];
             for (var i = 0; i < index.length; i++) {
               var words = ' ' + index[i] + ' ';
@@ -164,7 +171,10 @@ block content
 
           var sim = cosinus_similarity(docvec1, docvec2);
           var simb = cosinus_similarity(docvec1b, docvec2b);
-          sim == simb == 2.6832815729997477
+          var equal = sim == simb;
+          console.log('similarity normal', sim);
+          console.log('similarity shuffle', simb);
+          console.log('normal and shuffle are equal', equal);
 
           // Calculates and returns the dot product of two vectors
           function dotproduct(a, b) {
@@ -211,6 +221,7 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
+          // Calculate tf-idf manually
           var doc1 = "New York is very nice and very beautiful";
           var doc2 = "I have a very nice evening learning nlp";
           var tf_bow = get_feature_vector(doc1, index);
@@ -225,8 +236,10 @@ block content
           tf_idf_bow = [1*0.69, 1*0.69, 1*0.69, 2*0, 1*0, 1*0.69, 1*0.69, 
                         0*0.69, 0*0.69, 0*0.69, 0*0.69, 0*0.69, 0*0.69]; 
           tf_idf_bow = [0.69, 0.69, 0.69, 0, 0, 0.69, 0.69, 0, 
-                        0, 0, 0, 0, 0]; 
-          tf_idf_bow == get_tfidf_feature_vector(doc1, index, [doc1, doc2]);
+                        0, 0, 0, 0, 0];
+          console.log('index', index);
+          console.log('tf_bow', tf_bow);
+          console.log('tf_idf_bow', tf_idf_bow);
     p.
       As <b>very</b> and <b>nice</b> are appearing in two (so in all) documents, 
       their inverse-document-frequency is zero. This means they are to general to be important.
@@ -234,16 +247,21 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
+          // Calculate tf-idf with a function
+          tf_idf_bow = get_tfidf_feature_vector(doc1, index, [doc1, doc2]);
+          console.log('tf_idf_bow calculated', tf_idf_bow);
+
+
           // Calculates the inverse-document-frequence given the
           // number of all documents and the number of all documents
           // the term occurs in.
-          var get_idf = function(n_docs, n_docs_with_term) {
+          function get_idf(n_docs, n_docs_with_term) {
             return Math.log(n_docs / n_docs_with_term);
           }
 
           // Calculates the document-frequence given the term
           // and all the documents.
-          var get_df = function(term, docs) {
+          function get_df(term, docs) {
             var count = 0;
             for (var i = 0; i < docs.length; i++) {
               var doc = docs[i];
@@ -256,7 +274,7 @@ block content
 
           // Calculates the term-frequence given the term
           // and the document to check
-          var get_tf = function(term, doc) {
+          function get_tf(term, doc) {
             var words = ' ' + term + ' ';
             var startwords = '^' + term + ' ';
             var endwords = ' ' + term + '$'
@@ -267,7 +285,7 @@ block content
 
           // Calculates the tf-idf feature vector of a document 
           // given the document, the index and all other documents.
-          var get_tfidf_feature_vector = function(doc, index, docs) {
+          function get_tfidf_feature_vector(doc, index, docs) {
             docvec = [];
             for (var i = 0; i < index.length; i++) {
               var tf = get_tf(index[i], doc);
@@ -292,15 +310,15 @@ block content
         :code
           // Generating context by concatinating and combining 
           // neighbour terms
-          1_gram = "new york is a nice city"
-          
-          2_gram = "new_york york_is is_a a_nice nice_city"
+          one_gram   = "new york is a nice city";
 
-          3_gram = "new_york_is york_is_a is_a_nice a_nice_city"
+          two_gram   = "new_york york_is is_a a_nice nice_city";
 
-          123_gram = "new york is a nice city new_york york_is 
-                      is_a a_nice nice_city new_york_is york_is_a 
-                      is_a_nice a_nice_city"
+          three_gram = "new_york_is york_is_a is_a_nice a_nice_city";
+
+          all_gram   = "new york is a nice city new_york york_is " +
+                       "is_a a_nice nice_city new_york_is york_is_a " +
+                       "is_a_nice a_nice_city"
     p.
       The new generated terms are saving some context. 
       For example the terms <b>new_york</b> and <b>nice_city</b>. 
@@ -309,8 +327,12 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
+          // extend doc with grams
+          var all_grams = extend_grams(one_gram, 3);
+          console.log('up to 3 grams:', all_grams);
+
           // Returns a array of new n-grams
-          var get_n_gram = function(terms, n) {
+          function get_n_gram(terms, n) {
               var t = terms.slice(0); // deep-copy
               var grams = [];
               for (var i=0; i < t.length-n+1; i++) {
@@ -318,10 +340,10 @@ block content
               }
               return grams;
           }
-          
+
           // Returns an extended document with n-grams up to
           // a given n.
-          var extend_grams = function(doc, up_to_n) {
+          function extend_grams(doc, up_to_n) {
             var terms = doc.split(' ');
             var extended = [];
             for (var i = 1; i <= up_to_n; i++) {
@@ -364,9 +386,9 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
-          document = "basel is a nicer city than new york"
-          cleand   = "basel nicer city new york"
-          stemmed  = "basel nice city new york"
+          var document = "basel is a nicer city than new york";
+          var cleand   = "basel nicer city new york";
+          var stemmed  = "basel nice city new york";
     p.
       As you can see, the meaning is similar BUT as soon as you have to
       interpret, the <b>meaning can change</b>. So, when using smarter algorithms 
@@ -383,6 +405,7 @@ block content
     pre.line-numbers.el--is-oversized
       code.language-javascript
         :code
+          // extend doc with grams
           var doc1 = 'My little brother is a genious, he just figured ' +
                      'out how to build the hoverboard!';
           var doc2 = 'There is the rumor that the father of my half ' +
@@ -401,10 +424,11 @@ block content
           // Goes through all documents in the corpus, deletes specialchars,
           // and adds n-grams. Stopwordremoval and stemming is not implemented
           // jet.
-          var preprocess_corpus = function(corpus, to_n_gram) {
+          function preprocess_corpus(corpus, to_n_gram) {
             cleaned = [];
             for (var i=0; i < corpus.length; i++) {
-              var doc = corpus[i].replace(/[^\w\s]/gi, '') // clean specialchars
+              // clean specialchars
+              var doc = corpus[i].replace(/[^0-9a-zA-Z ]+/gi, ''); 
               // to be implemented
               // doc = remove_stopwords(doc, stoppword_dict);
               // doc = stemming(doc);
@@ -417,7 +441,7 @@ block content
           // Goes through all documents in the corpus and compairs them
           // with the cosinus_similarity to the query (document). Returns
           // the most similar document in the corpus.
-          var most_similar = function(query, index, corpus) {
+          function most_similar(query, index, corpus) {
             var qv = get_tfidf_feature_vector(query, index, corpus);
             var most_similar = 0.;
             var most_similar_doc = '';

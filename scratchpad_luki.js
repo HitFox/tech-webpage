@@ -133,27 +133,15 @@ var docvec1b = get_feature_vector(doc1b, index);
 //var two_gram = extend_grams(doc1);
 //console.log(two_gram);
 
-var docvec2 = get_feature_vector(doc2, index);
-var docvec2b = get_feature_vector(doc2b, index);
-
-var sim = cosinus_similarity(docvec1, docvec2);
-var simb = cosinus_similarity(docvec1b, docvec2b);
-
-var d1 = 'My little brother is a genious, he just figured out ' +
-           'how to build the hoverboard!';
-var d2 = 'There is the rumor that the father of my half brother ' +
-           'is a famous actor.';
-var d3 = 'Math was his beloved subject until he had a very bad ' +
-           'teacher.';
-var d4 = 'When my father was young, there were different times. ' +
-           'Even the internet was not invented jet!'
-var corpus = [d1, d2, d3, d4];
-
+// Goes through all documents in the corpus, deletes specialchars,
+// and adds n-grams. Stopwordremoval and stemming is not implemented
+// jet.
 var preprocess_corpus = function(corpus, to_n_gram) {
-  var cleaned = [];
+  cleaned = []
   for (var i=0; i < corpus.length; i++) {
     var doc = corpus[i].replace(/[^\w\s]/gi, '') // clean specialchars
-    // doc = remove_stopwords(doc);
+    // to be implemented
+    // doc = remove_stopwords(doc, stoppword_dict);
     // doc = stemming(doc);
     doc = extend_grams(doc, to_n_gram);
     cleaned.push(doc);
@@ -161,12 +149,10 @@ var preprocess_corpus = function(corpus, to_n_gram) {
   return cleaned;
 }
 
-corpus = preprocess_corpus(corpus, 3);
-var index = make_index(corpus);
-
-var search_query = 'brother father';
-
-var search_in_corpus = function(query, index, corpus) {
+// Goes through all documents in the corpus and compairs them
+// with the cosinus_similarity to the query (document). Returns
+// the most similar document in the corpus.
+var most_similar = function(query, index, corpus) {
   var qv = get_tfidf_feature_vector(query, index, corpus);
   var most_similar = 0.;
   var most_similar_doc = '';
@@ -178,12 +164,23 @@ var search_in_corpus = function(query, index, corpus) {
       most_similar_doc = corpus[i];
     }
   }
-  console.log(most_similar);
   return most_similar_doc;
 }
 
-console.log('serach', search_in_corpus(search_query, index, corpus));
+var doc1 = 'My little brother is a genious, he just figured ' +
+           'out how to build the hoverboard!';
+var doc2 = 'There is the rumor that the father of my half ' +
+           'brother is a famous actor.';
+var doc3 = 'Math was his beloved subject until he had a very ' +
+           'bad teacher.';
+var doc4 = 'When my father was young, there were different ' +
+           'times. Even the internet was not invented jet!';
+var corpus = [doc1, doc2, doc3, doc4];
 
+corpus = preprocess_corpus(corpus, 3);
+var index = make_index(corpus);
+var query = 'father brother';
+console.log('searchresult', most_similar(query, index, corpus));
 
 //console.log(index);
 //console.log(docvec1);
@@ -199,149 +196,3 @@ console.log(tf_idf1);
 //console.log(doc1.split(' '));
 var index = ["New", "York", "is", "very", "nice", "and", "bautiful",
          "I", "have", "a", "evening", "learning", "nlp"];
-
-/*
-Exception: ReferenceError: doc is not defined
-@Scratchpad/1:27:1
-*/
-/*
-Exception: TypeError: index.append is not a function
-make_index@Scratchpad/1:20:9
-@Scratchpad/1:27:13
-*/
-/*
-Exception: SyntaxError: missing ; after for-loop condition
-@Scratchpad/1:29
-*/
-/*
-Exception: SyntaxError: missing ) in parenthetical
-@Scratchpad/1:31
-*/
-/*
-Exception: TypeError: index is undefined
-get_feature_vector@Scratchpad/1:29:19
-@Scratchpad/1:38:14
-*/
-/*
-Exception: TypeError: index is undefined
-get_feature_vector@Scratchpad/1:29:19
-@Scratchpad/1:38:14
-*/
-/*
-Exception: TypeError: doc.match(...) is null
-get_feature_vector@Scratchpad/1:31:17
-@Scratchpad/1:38:14
-*/
-/*
-Exception: TypeError: doc.match(...) is null
-get_feature_vector@Scratchpad/1:31:17
-@Scratchpad/1:38:14
-*/
-/*
-Exception: TypeError: doc.match(...) is null
-get_feature_vector@Scratchpad/1:31:17
-@Scratchpad/1:38:14
-*/
-/*
-Exception: TypeError: idf is not a function
-get_tfidf_feature_vector@Scratchpad/1:93:15
-@Scratchpad/1:102:15
-*/
-/*
-Exception: SyntaxError: missing ; before statement
-@Scratchpad/1:102
-*/
-/*
-Exception: ReferenceError: term is not defined
-add_2_gram@Scratchpad/1:104:5
-@Scratchpad/1:115:16
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:135:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:136:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:133:5
-extends_grams@Scratchpad/1:115:1
-@Scratchpad/1:126:23
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:133:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:132:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:132:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:132:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:132:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:132:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:133:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:134:5
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:134:5
-*/
-/*
-Exception: ReferenceError: j is not defined
-extends_grams@Scratchpad/1:115:5
-@Scratchpad/1:126:23
-*/
-/*
-Exception: ReferenceError: add_2_gram is not defined
-@Scratchpad/1:133:5
-*/
-/*
-Exception: SyntaxError: missing ; before statement
-@Scratchpad/1:169
-*/
-/*
-Exception: ReferenceError: extend_grams is not defined
-preprocess_corpus@Scratchpad/1:158:5
-@Scratchpad/1:164:10
-*/
-/*
-Exception: ReferenceError: cleand is not defined
-preprocess_corpus@Scratchpad/1:159:5
-@Scratchpad/1:164:10
-*/
-/*
-Exception: ReferenceError: extends_grams is not defined
-@Scratchpad/1:126:1
-*/
-/*
-Exception: TypeError: corpus[i] is undefined
-preprocess_corpus@Scratchpad/1:155:9
-@Scratchpad/1:164:10
-*/
-/*
-Exception: TypeError: doc is undefined
-get_tf@Scratchpad/1:85:3
-get_tfidf_feature_vector@Scratchpad/1:91:14
-search_in_corpus@Scratchpad/1:174:14
-@Scratchpad/1:186:13
-*/
