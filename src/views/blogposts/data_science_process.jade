@@ -15,21 +15,21 @@ block content
       a(class="link-icon icon-twitter" href="https://twitter.com/agento")
     hr
     p.
-      Every professional field comes with unique needs and its special
-      gotchas to be aware of. As people working in their environments, they tend
-      to learn from errors and come up with solid paths to hold on. You can call
-      them best practices, red line or formal "process models" as you like it.
+      Every professional field has its unique needs and special
+      gotchas to be aware of. As people working in particular environments, they tend
+      to learn from errors and come up with solid paths to follow. You could call
+      them best practices, red line, or formal "process models".
       <br><br>
-      Also in data science it exists a way to follow to extend your chance to
-      be successfull. With this post, I try to show the one I followed through my
+      Also in data science there exists a way to increase your chance of
+      success. With this post, I will try to show the path I followed through my
       first data science project at HitFox Group.
     h2 A few easy steps
     p.
       <strong>Defining a baseline</strong> is the first step which has to be done in every
       data science project. The baseline translates the outcome of the model 
       to a real-life cost dimension. It is also used to measure the cost 
-      savings by the intelligent model accoring a basic stupid one.
-      <strong>When you are not able to define a proper baseline, maybe machine learning is not helping you out at all</strong>. 
+      savings by the intelligent model according to a basic stupid one.
+      <strong>When you are not able to define a proper baseline, maybe machine learning is not helpful at all</strong>. 
       Things to consider while defining the baseline are:
     ul
       li What do we want to automate/optimize?
@@ -42,45 +42,44 @@ block content
         We humans, train the machines of the future with our 
         intelligent behaviour today!
     p.
-      <strong>Getting the Data</strong> is the obvious, most important part. Having good
+      <strong>Getting the Data</strong> is the most obvious and important part. Having well
       labeled quality data is even more important than being the best
-      data scientist in the world, knowing the best algorithms. That's one reason
-      why many big companies are giving you free products payed by your 
-      behaviour data. We humans, train the machines of the future by our 
+      data scientist in the world or knowing the best algorithms. That's one reason
+      why many big companies are giving out free products paid for with your 
+      behaviour data. We humans, train the machines of the future with our 
       intelligent behaviour today!
     ul
-      li What kind of Data is important for the use-case?
-      li Where do we have the relevant data from?
+      li What kind of data is important for the use-case?
+      li Where do we get the relevant data from?
       li Is the data labeled properly?
-      li Is there <strong>enough</strong> data to be generalized? 
+      li Is there <strong>enough</strong> data to form generalizations? 
       li. 
-        Are we allowed to own the data? Check the german right for privacy!
+        Are we allowed to own the data? Check the German right for privacy!
     p.
       <strong>Splitting into training, validation and test sets</strong>. When
       training a model there has to be data left to prove the results with 
-      not touched data. In this step it is important to check, that the 
-      datasets are good balanced. A good way to do this is by splitting the sets
-      in a random way. My prefered way is to take the older data for training
+      untouched data. In this step it is important to check that the 
+      datasets are well balanced. A good way to do this is by splitting the sets
+      in a random way. My preferred way is to take the older data for training
       and the newer for test and validation. This has a kind of real-world
       randomness in it.
     p.
       <strong>Preprocess the data</strong>. The raw data often is in a very
-      chaotic state. Depending on the need, with preprocessing you can shape
-      the data to make it more meaningful. In natural language processing
+      chaotic state. Depending on need, you can hape the data with preprocessing
+      to make it more meaningful. In natural language processing
       the text is cleaned from meta characters and stopwords which have no
-      contextual meaning. In the preprocessing step the data is also tranfered
-      from a arbitrary form (like text) to a machine processable mathematical
-      form (vectors/matrices). This transformation is often combined with the 
+      contextual meaning. In the preprocessing step the data is also tranferred
+      from a arbitrary form (e.g. text) to a machine processable mathematical
+      form (e.g. vectors/matrices). This transformation is often combined with the 
       next step.
     p.
       <strong>Feature engineering</strong> is after "getting the data" the next
-      underrated task. With feature engineering we try to find the good 
-      properties in the data which makes the most sense for the problem to 
-      solve.
+      underrated task. With feature engineering we try to find the most logical
+      properties in the data in that can be used to solve the problem.
       You need a deep understanding of the problem and its context for
-      chosing, finding and producing good features. Here often it is more
+      chosing, finding and producing good features. Here it is often more
       valuable to partner with Psychologists and Sociologists than the good
-      programmer next door. They are doing data science since years, when not
+      programmer next door. They have been doing data science for years, despite not
       coupled with fancy machine-learning.
     ul
       li What kind of data do I have?
@@ -90,17 +89,17 @@ block content
       li Can I <strong>combine features and external data sources</strong> to get new ones?
     p.
       <strong>Design and train the model</strong>. This is the step where the 
-      algorithms come to play, and in my opinion the "hype" in data science
-      take place. When the data is in a good shape it is time to 
-      choose/combine the algorithms and design a model. The model
+      algorithms come into play, and in my opinion the "hype" in data science
+      takes place. When the data is in good shape, it is time to 
+      choose and combine the algorithms and to design a model. The model
       gets trained with the training data and afterwards validated with the 
-      validation data. The validation data is also used to finetune the 
+      validation data. The validation data is also used to fine-tune the 
       parameters for the model. 
     p.
       <strong>Test it with new production data</strong> before deploy it to 
       production. It is strongly recommended to test it with new data,
-      you never have seen before. When it still performs good the model is mature
-      to <strong>influence / manipulate our behaviour</strong>.
+      you never have seen before. When it still performs well, the model is mature
+      enough to <strong>influence and manipulate our behaviour</strong>.
     
       
     
